@@ -1,0 +1,70 @@
+.content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/*  FORMULÁRO  */
+
+.form{
+    display: flex;
+    text-align: center;
+}
+
+input{
+    border-radius: 10px;
+    padding: 10px, 5px;
+    margin-top: 10px;
+}
+
+/*  TEXTO  */
+
+p{
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.p_text{
+    font-size: 75px;
+}
+
+.esqueceu_sua_senha{
+    font-size: larger;
+
+}
+
+.esqueceu_sua_senha a{
+    color: var(--verde-secundario);
+    font-weight: bold;
+}
+
+/*  INPUT  */
+
+.input_info{
+    padding: 10px 15px;
+    width: 400px;
+    height: 50px;
+
+    font-size: 25px;
+    color: antiquewhite;
+
+    background: none;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid var(--verde-secundario);
+}
+
+.input_button{
+    width: 200px;
+    height: 50px;
+
+    color: antiquewhite;
+    font-size: larger;
+
+    background: none;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid var(--verde-secundario);
+}

@@ -1,0 +1,7 @@
+:root{
+    --black: #000;
+    --verde-primario: #172018;
+    --verde-secundario: #415d43;
+    --font-color: #faebd7;
+    --fundo: linear-gradient(0.25turn, var(--black), var(--verde-primario));
+}

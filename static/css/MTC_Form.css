@@ -1,0 +1,92 @@
+.parente {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(4, 1fr); /*concerta*/
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main{
+    display: flex;
+    justify-content: space-around;
+}
+
+.nome{
+    font-family: 'League Spartan', sans-serif;
+    font-size: 200px;
+    text-align: center;
+    color: var(--font-color);
+    font-weight: bold;
+    margin: 20px;
+}
+
+.descricao{
+    font-size: 30px;
+    text-align: justify;
+    max-width: 600px;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 0 20px;
+}
+
+label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="button"]{
+    width: 400px;
+    height: 50px;
+    text-align: center;
+    background: none;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: none;
+    border: 2px solid var(--verde-secundario);
+    color: var(--font-color);
+}
+
+input[type="button"]:hover{
+    background: var(--verde-secundario);
+    cursor: pointer;
+}
+
+input[type="text"]{
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    margin: 10px;
+    text-align: left;
+    background: none;
+    border-radius: 100px;
+    border: 2px solid var(--verde-secundario);
+    color: var(--font-color);
+}
+
+select{
+    width: 300px;
+    height: 40px;
+    margin: 10px;
+    text-align: center;
+    background: none;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: none;
+    border: 2px solid var(--verde-secundario);
+    color: var(--font-color);
+}
+
+option {
+  background-color: var(--verde-primario); /* fundo da opção  */
+}

@@ -1,0 +1,152 @@
+body{
+    background: var(--fundo);
+    height: 100%;
+    width: 100%;
+    color: var(--font-color);
+}
+
+.div2, .div3, .div4, .div5 {
+    width: 200px;
+    height: 50px;
+
+    text-align: center;
+    background: none;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: none;
+    border: 2px solid var(--verde-secundario);
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+}
+    
+
+.div2 {
+    grid-column-start: 4;
+}
+
+.div3 {
+    grid-column-start: 5;
+}
+
+.div4 {
+    grid-column-start: 6;
+}
+
+.div5 {
+    grid-column-start: 7;
+}
+
+img{
+    border-radius: 10px;
+    max-height: 150px;
+}
+
+.conteiner{
+    display: flex;
+    justify-content: center;
+}
+
+.formulario{
+    border: 3px dashed var(--verde-secundario);
+    width: 50%;
+    height: 75vh;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    min-width: 460px;
+    display: flex;
+    flex-direction: column; /* organiza em colunas */
+}
+
+.exercicios{
+    flex: 1; /* ocupa todo espaço livre dentro do formulario */
+    overflow-y: auto; /* scroll só aqui */
+    min-height: 0; /* evita que o flex "estoure" */
+}
+
+.exercicio{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    background: var(--verde-primario);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 200px;
+    width: 100%;
+    min-width: 460px;
+}
+
+input[type="submit"]{
+    margin-left: auto;
+    display: block;
+    justify-content: center;
+    background: #161d17;
+    border: none;
+    border-radius: 10px;
+    color: var(--fundo);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 10px;
+}
+
+input[type="text"]{
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    margin: 10px;
+    text-align: left;
+    background: none;
+    border-radius: 100px;
+    border: 2px solid var(--verde-secundario);
+    color: var(--font-color);
+}
+
+select{
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    margin: 10px;
+    text-align: left;
+    background: none;
+    border-radius: 100px;
+    border: 2px solid var(--verde-secundario);
+    color: var(--font-color);
+}
+
+option {
+  background-color: var(--verde-primario); /* fundo da opção  */
+}
+
+.exercicios::-webkit-scrollbar {
+    margin: 5px;
+    width: 8px; /* largura da barra */
+}
+
+.exercicios::-webkit-scrollbar-track {
+    background: #0d0f0d;
+    border-radius: 10px;
+}
+
+.exercicios::-webkit-scrollbar-thumb {
+    background-color: var(--verde-secundario); /* cor da barra */
+    border-radius: 10px;
+    border: 2px solid #0d0f0d; /* "espacinho" pro efeito arredondado */
+}
+
+.exercicios::-webkit-scrollbar-thumb:hover {
+    background-color: var(--verde-primario); /* muda ao passar o mouse */
+}

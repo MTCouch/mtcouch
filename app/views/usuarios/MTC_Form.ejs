@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTCouch</title>
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/static/css/var.css">
+    <link rel="stylesheet" href="/static/css/MTC_Form.css">
+    <link rel="stylesheet" href="/static/css/config_index.css">
+</head>
+<body>
+<div class="parent">
+    <div class="div1" ><a class="a" href="/">LOGO</a></div>
+    <div class="div2" ><a class="a" href="/criar">Criar</a></div>
+    <div class="div3" ><a class="a" href="/mtcf">MGCouch</a></div>
+    <div class="div4" ><a class="a" href="/exercicios">Exercícios</a></div>
+    <div class="div5" ><a class="a" href="">Treino</a></div>
+</div>
+
+    <div class="container">
+        <div class="main">
+            <div class="nome">MTC</div>
+            <form action="/mtc" action="post">
+                <div class="formulario">
+                    <p class="descricao">Fale um pouco sobre seu treino</p>
+
+                    <div class="inputs">
+                        <label for="nome">Digite o nome
+                            <input type="text">
+                        </label>
+                        
+                        <label for="nome">Vezes por semana
+                            <select name="dias" id="">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </label>
+                        
+                        <label for="nome">Sua experiencia com treinos
+                            <select name="dias" id="">
+                                <option value="iniciante">Iniciante</option>
+                                <option value="intermediario">Intermediário</option>
+                                <option value="avancado">Avançado</option>
+                            </select>
+                        </label>
+
+                        
+                        <label for="nome">Objetivo principal
+                            <select name="dias" id="">
+                                <option value="hipertrofia">Hipertrofia</option>
+                                <option value="definicao">Definição</option>
+                                <option value="resistencia">Resistência</option>
+                                <option value="emagrecimento">Emagrecimento</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="button">
+                        <input type="submit" value="Testar Agora">
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>

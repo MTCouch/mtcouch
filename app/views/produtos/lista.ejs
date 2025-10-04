@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista</title>
+    <link rel="stylesheet" href="/static/css/estilo.css">
+    <style>
+        .centralizar{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table border="1px">
+        <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th colspan="2" class="centralizar">Opções</th>
+        </tr>
+        <% for(var i = 0; i<lista.length; i++) {%>
+        <tr>
+            <td><%=lista[i].id%></td>
+            <td><%=lista[i].titulo%></td>
+            <td><%=lista[i].descricao%></td>
+            <td><%=lista[i].preco%></td>
+            <td class="centralizar"><a href="/editar/<%=lista[i].id%>">ALTERAR</a></td>
+            <td class="centralizar"><a href="/delete/<%=lista[i].id%>"
+                onclick="return confirmarExcluir()">EXCLUIR</a></td>
+        </tr>
+        <% } %>
+    </table>
+    <a href="/">Index</a>
+</body>
+<script>
+    function confirmarExcluir(){
+        return confirm("Tem certeza que deseja excluir?");
+    }
+</script>
+</html>

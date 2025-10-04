@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/static/css/var.css">
+    <link rel="stylesheet" href="/static/css/MTCouch.css">
+    <link rel="stylesheet" href="/static/css/config_index.css">
+
+</head>
+<body>
+    <%if(usuario){%>
+        <div class="parent">
+            <div class="div1" ><a class="a" href="/">LOGO</a></div>
+            <div class="div2" ><a class="a" href="/criar">Criar</a></div>
+            <div class="div3" ><a class="a" href="/mtc">MGCouch</a></div>
+            <div class="div4" ><a class="a" href="/exercicios">Exercícios</a></div>
+            <div class="div5" ><a class="a" href="">Treino</a></div>
+        </div>
+                    
+        <div class="container">
+            <div class="main">
+                <div class="nome">MTC</div>
+                <div class="descricao">O MTCouch é um aplicativo inovador projetado para ajudar você a alcançar seus objetivos de fitness de maneira eficiente e personalizada. Com uma interface amigável e recursos avançados, o MTCouch oferece planos de treino adaptados às suas necessidades individuais, acompanhamento de progresso em tempo real e dicas de especialistas em saúde e bem-estar. Seja você um iniciante ou um atleta experiente, o MTCouch está aqui para motivá-lo, guiá-lo e garantir que você atinja seu potencial máximo. Transforme sua rotina de exercícios com o MTCouch e descubra uma nova maneira de se manter ativo e saudável!</div>
+            </div>
+        </div>
+
+    <%} else {%>
+        
+        <div class="parent">
+            <div class="div1" ><a class="a" href="/">LOGO</a></div>
+            <div class="div4" ><a class="a" href="/login">Login</a></div>
+            <div class="div5" ><a class="a" href="/registro">Cadastrar</a></div>
+        </div>
+
+        <div class="container">
+            <div class="main">
+                <div class="nome">MTC</div>
+                <div class="descricao">O MTCouch é um aplicativo inovador projetado para ajudar você a alcançar seus objetivos de fitness de maneira eficiente e personalizada. Com uma interface amigável e recursos avançados, o MTCouch oferece planos de treino adaptados às suas necessidades individuais, acompanhamento de progresso em tempo real e dicas de especialistas em saúde e bem-estar. Seja você um iniciante ou um atleta experiente, o MTCouch está aqui para motivá-lo, guiá-lo e garantir que você atinja seu potencial máximo. Transforme sua rotina de exercícios com o MTCouch e descubra uma nova maneira de se manter ativo e saudável!</div>
+            </div>
+        </div>
+
+    <%}%>
+</body>
+</html>

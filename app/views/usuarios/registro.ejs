@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Login</title>
+    
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/static/css/var.css">
+    <link rel="stylesheet" href="/static/css/config_forms.css">
+    <link rel="stylesheet" href="/static/css/login.css">
+
+</head>
+<body>
+
+    <div class="parent">
+        <div class="div1" ><a class="a" href="/">LOGO</a></div>
+    </div>
+
+    <%if(errosValidacao.length > 0){%>
+        <ul>
+            <%errosValidacao.forEach(function(erro){%>
+                <li><%=erro.msg%></li>
+            <%});%>
+        </ul>
+    <%}%>
+
+    <div class="content">
+        <div class="text_login">
+            <p>Conheça o</p>
+            <p style="color: var(--verde-secundario);">MTC</p>
+            <p class="p_text">O seu personal</p>
+            <p class="p_text">particular</p>
+        </div>
+    
+        <div class="form">    
+            <form action="/registro" method="POST">
+                <div>
+                    <input type="email" id="email" name="email" class="input_info" placeholder="Email" required/>
+                </div>
+                <div>
+                    <input type="password" id="senha" name="senha" class="input_info" placeholder="Senha" required/>
+                </div>
+                <label for="senha" class="esqueceu_sua_senha">Já tem uma conta? <a href="/login">Acessar</a></label>
+                <%if(usuario && usuario.tipo==1){%>
+                <div>
+                    <label for="tipo">Tipo:</label>
+                    <select name="tipo" id="tipo">
+                        <option value="0">Usuário</option>
+                        <option value="1">Administrador</option>
+                    </select>
+                </div>
+                <%}%>
+                <input class="input_button" type="submit" value="Cadastrar"/>
+            </form>
+        </div>
+    </div>
+
+    <a href="/">Home</a>
+</body>
+</html>
