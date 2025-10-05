@@ -42,7 +42,7 @@ body{
     grid-column-start: 7;
 }
 
-img{
+iframe{
     border-radius: 10px;
     max-height: 150px;
 }

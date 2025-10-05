@@ -111,7 +111,7 @@
       "dificuldade": "Fácil",
       "classificacao": ["emagrecimento", "resistência"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1057885975?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1057885975?loop=1&muted=1"
     },
     {
       "id": 15,
@@ -184,7 +184,7 @@
       "dificuldade": "Médio",
       "classificacao": ["hipertrofia"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1038041274?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1038041274?loop=1&muted=1"
     },
     {
       "id": 24,
@@ -401,16 +401,16 @@
       "dificuldade": "Avançado",
       "classificacao": ["hipertrofia", "resistência"],
       "localidade": "academia",
-      "video": "https://vimeo.com/281421228?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/281421228?loop=1&muted=1"
     },
     {
       "id": 51,
       "nome": "Supino com Reto Halteres",
       "agrupamento_muscular": "Peito",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia" , "força"],
+      "classificacao": ["hipertrofia", "força"],
       "localidade": "ambos",
-      "video": "https://vimeo.com/1037179539?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037179539?loop=1&muted=1"
     },
     {
       "id": 52,
@@ -419,16 +419,16 @@
       "dificuldade": "Fácil",
       "classificacao": ["hipertrofia"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1037659689?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037659689?loop=1&muted=1"
     },
     {
       "id": 53,
       "nome": "Cadeira Flexora",
       "agrupamento_muscular": "Pernas",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia" , "força"],
+      "classificacao": ["hipertrofia", "força"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1037535114?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037535114?loop=1&muted=1"
     },
     {
       "id": 54,
@@ -437,7 +437,7 @@
       "dificuldade": "Fácil",
       "classificacao": ["hipertrofia"],
       "localidade": "academia",
-      "video": "https://vimeo.com/981826595?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/981826595?loop=1&muted=1"
     },
     {
       "id": 55,
@@ -446,7 +446,7 @@
       "dificuldade": "Fácil",
       "classificacao": ["hipertrofia"],
       "localidade": "ambos",
-      "video": "https://vimeo.com/900038435?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/900038435?loop=1&muted=1"
     },
     {
       "id": 56,
@@ -455,7 +455,7 @@
       "dificuldade": "Médio",
       "classificacao": ["força", "hipertrofia"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1038042113?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1038042113?loop=1&muted=1"
     },
     {
       "id": 57,
@@ -464,7 +464,7 @@
       "dificuldade": "Avançado",
       "classificacao": ["definição", "resistência"],
       "localidade": "casa",
-      "video": "https://vimeo.com/1102292345?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1102292345?loop=1&muted=1"
     },
     {
       "id": 58,
@@ -473,7 +473,7 @@
       "dificuldade": "Fácil",
       "classificacao": ["emagrecimento", "resistência"],
       "localidade": "casa",
-      "video": "https://vimeo.com/900113833?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/900113833?loop=1&muted=1"
     },
     {
       "id": 59,
@@ -482,7 +482,7 @@
       "dificuldade": "Médio",
       "classificacao": ["definição"],
       "localidade": "academia",
-      "video": "https://vimeo.com/984105829?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/984105829?loop=1&muted=1"
     },
     {
       "id": 60,
@@ -491,7 +491,7 @@
       "dificuldade": "Médio",
       "classificacao": ["resistência", "hipertrofia"],
       "localidade": "academia",
-      "video": "https://vimeo.com/281069235?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/281069235?loop=1&muted=1"
     },
     {
       "id": 61,
@@ -500,7 +500,7 @@
       "dificuldade": "Médio",
       "classificacao": ["hipertrofia"],
       "localidade": "ambos",
-      "video": "https://vimeo.com/1037179725?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037179725?loop=1&muted=1"
     },
     {
       "id": 62,
@@ -509,16 +509,16 @@
       "dificuldade": "Médio",
       "classificacao": ["hipertrofia"],
       "localidade": "academia",
-      "video": "https://vimeo.com/278192802?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/278192802?loop=1&muted=1"
     },
     {
       "id": 63,
       "nome": "Sumô Deadlift",
       "agrupamento_muscular": "Pernas",
       "dificuldade": "Avançado",
-      "classificacao": ["hipertrofia", "resistência" , "força"],
+      "classificacao": ["hipertrofia", "resistência", "força"],
       "localidade": "academia",
-      "video": "https://vimeo.com/897248635?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/897248635?loop=1&muted=1"
     },
     {
       "id": 64,
@@ -527,7 +527,7 @@
       "dificuldade": "Avançado",
       "classificacao": ["hipertrofia", "resistência"],
       "localidade": "casa",
-      "video": "https://vimeo.com/1008682697?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1008682697?loop=1&muted=1"
     },
     {
       "id": 65,
@@ -536,7 +536,7 @@
       "dificuldade": "Médio",
       "classificacao": ["hipertrofia", "resistência"],
       "localidade": "ambos",
-      "video": "https://vimeo.com/280600079?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/280600079?loop=1&muted=1"
     },
     {
       "id": 66,
@@ -545,7 +545,7 @@
       "dificuldade": "Médio",
       "classificacao": ["definição"],
       "localidade": "casa",
-      "video": "https://vimeo.com/980246465?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/980246465?loop=1&muted=1"
     },
     {
       "id": 67,
@@ -554,7 +554,7 @@
       "dificuldade": "Médio",
       "classificacao": ["resistência", "hipertrofia"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1010564775?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1010564775?loop=1&muted=1"
     },
     {
       "id": 68,
@@ -563,7 +563,7 @@
       "dificuldade": "Fácil",
       "classificacao": ["definição"],
       "localidade": "ambos",
-      "video": "https://vimeo.com/981020409?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/981020409?loop=1&muted=1"
     },
     {
       "id": 69,
@@ -572,7 +572,7 @@
       "dificuldade": "Médio",
       "classificacao": ["hipertrofia"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1038042044?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1038042044?loop=1&muted=1"
     },
     {
       "id": 70,
@@ -581,7 +581,7 @@
       "dificuldade": "Médio",
       "classificacao": ["hipertrofia"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1037659950?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037659950?loop=1&muted=1"
     },
     {
       "id": 71,
@@ -590,7 +590,7 @@
       "dificuldade": "Avançado",
       "classificacao": ["emagrecimento", "resistência"],
       "localidade": "ambos",
-      "video": "https://vimeo.com/78344505?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/78344505?loop=1&muted=1"
     },
     {
       "id": 72,
@@ -599,25 +599,25 @@
       "dificuldade": "Médio",
       "classificacao": ["definição"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1037179700?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037179700?loop=1&muted=1"
     },
     {
       "id": 73,
       "nome": "Puxada Frente Maquina",
       "agrupamento_muscular": "Costas",
       "dificuldade": "Fácil",
-      "classificacao": ["resistência", "hipertrofia" , "força"],
+      "classificacao": ["resistência", "hipertrofia", "força"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1037659666?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037659666?loop=1&muted=1"
     },
     {
       "id": 74,
       "nome": "Panturrilha no Leg Press Horizontal",
       "agrupamento_muscular": "Pernas",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia" , "força"],
+      "classificacao": ["hipertrofia", "força"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1037535160?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037535160?loop=1&muted=1"
     },
     {
       "id": 75,
@@ -626,7 +626,7 @@
       "dificuldade": "Médio",
       "classificacao": ["definição"],
       "localidade": "academia",
-      "video": "https://vimeo.com/981020409?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/981020409?loop=1&muted=1"
     },
     {
       "id": 76,
@@ -635,7 +635,7 @@
       "dificuldade": "Médio",
       "classificacao": ["hipertrofia"],
       "localidade": "ambos",
-      "video": "https://vimeo.com/1078409434?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1078409434?loop=1&muted=1"
     },
     {
       "id": 77,
@@ -644,7 +644,7 @@
       "dificuldade": "Fácil",
       "classificacao": ["definição"],
       "localidade": "casa",
-      "video": "https://vimeo.com/1010960886?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1010960886?loop=1&muted=1"
     },
     {
       "id": 78,
@@ -653,7 +653,7 @@
       "dificuldade": "Avançado",
       "classificacao": ["emagrecimento", "resistência"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1102788289?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1102788289?loop=1&muted=1"
     },
     {
       "id": 79,
@@ -662,7 +662,7 @@
       "dificuldade": "Fácil",
       "classificacao": ["hipertrofia", "resistência"],
       "localidade": "casa",
-      "video": "https://vimeo.com/1024787595?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1024787595?loop=1&muted=1"
     },
     {
       "id": 80,
@@ -671,7 +671,7 @@
       "dificuldade": "Médio",
       "classificacao": ["hipertrofia", "força"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1037659791?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037659791?loop=1&muted=1"
     },
     {
       "id": 81,
@@ -680,7 +680,7 @@
       "dificuldade": "Avançado",
       "classificacao": ["resistência", "hipertrofia"],
       "localidade": "ambos",
-      "video": "https://vimeo.com/1009807159?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1009807159?loop=1&muted=1"
     },
     {
       "id": 82,
@@ -689,7 +689,7 @@
       "dificuldade": "Médio",
       "classificacao": ["hipertrofia", "resistência"],
       "localidade": "academia",
-      "video": "https://vimeo.com/281441327?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1057889976?loop=1&muted=1"
     },
     {
       "id": 83,
@@ -698,7 +698,7 @@
       "dificuldade": "Avançado",
       "classificacao": ["hipertrofia"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1009870574?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1009870574?loop=1&muted=1"
     },
     {
       "id": 84,
@@ -707,7 +707,7 @@
       "dificuldade": "Avançado",
       "classificacao": ["definição", "resistência", "força"],
       "localidade": "casa",
-      "video": "https://vimeo.com/367066706?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/367066706?loop=1&muted=1"
     },
     {
       "id": 85,
@@ -716,7 +716,7 @@
       "dificuldade": "Médio",
       "classificacao": ["hipertrofia", "resistência", "força"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1037659804?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037659804?loop=1&muted=1"
     },
     {
       "id": 86,
@@ -725,7 +725,7 @@
       "dificuldade": "Fácil",
       "classificacao": ["definição"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1038041983?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1038041983?loop=1&muted=1"
     },
     {
       "id": 87,
@@ -733,8 +733,8 @@
       "agrupamento_muscular": "Costas",
       "dificuldade": "Avançado",
       "classificacao": ["hipertrofia"],
-      "localidade": "academia",    
-      "video": "https://vimeo.com/1037659771?fl=pl&fe=sh"
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1037659771?loop=1&muted=1"
     },
     {
       "id": 88,
@@ -743,7 +743,7 @@
       "dificuldade": "Médio",
       "classificacao": ["definição", "resistência"],
       "localidade": "ambos",
-      "video": "https://vimeo.com/988208642?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/988208642?loop=1&muted=1"
     },
     {
       "id": 89,
@@ -752,7 +752,7 @@
       "dificuldade": "Fácil",
       "classificacao": ["resistência"],
       "localidade": "casa",
-      "video": "https://vimeo.com/900113833?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/900113833?loop=1&muted=1"
     },
     {
       "id": 90,
@@ -760,8 +760,8 @@
       "agrupamento_muscular": "Costas",
       "dificuldade": "Avançado",
       "classificacao": ["hipertrofia"],
-      "localidade": "academia",    
-      "video": "https://vimeo.com/1037659785?fl=pl&fe=sh"
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1037659785?loop=1&muted=1"
     },
     {
       "id": 91,
@@ -770,7 +770,7 @@
       "dificuldade": "Médio",
       "classificacao": ["hipertrofia"],
       "localidade": "ambos",
-      "video": "https://vimeo.com/1037660128?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037660128?loop=1&muted=1"
     },
     {
       "id": 92,
@@ -779,7 +779,7 @@
       "dificuldade": "Médio",
       "classificacao": ["hipertrofia"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1037535087?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037535087?loop=1&muted=1"
     },
     {
       "id": 93,
@@ -788,7 +788,7 @@
       "dificuldade": "Fácil",
       "classificacao": ["hipertrofia", "força"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1037659714?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037659714?loop=1&muted=1"
     },
     {
       "id": 94,
@@ -797,7 +797,7 @@
       "dificuldade": "Avançado",
       "classificacao": ["hipertrofia"],
       "localidade": "academia",
-      "video": "https://vimeo.com/970347896?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/970347896?loop=1&muted=1"
     },
     {
       "id": 95,
@@ -806,7 +806,7 @@
       "dificuldade": "Fácil",
       "classificacao": ["hipertrofia", "força"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1037659961?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037659961?loop=1&muted=1"
     },
     {
       "id": 96,
@@ -815,7 +815,7 @@
       "dificuldade": "Avançado",
       "classificacao": ["definição", "resistência"],
       "localidade": "casa",
-      "video": "https://vimeo.com/950170117?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/950170117?loop=1&muted=1"
     },
     {
       "id": 97,
@@ -824,7 +824,7 @@
       "dificuldade": "Avançado",
       "classificacao": ["hipertrofia", "resistência", "emagrecimento"],
       "localidade": "casa",
-      "video": "https://vimeo.com/749860081?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/749860081?loop=1&muted=1"
     },
     {
       "id": 98,
@@ -833,7 +833,7 @@
       "dificuldade": "Médio",
       "classificacao": ["hipertrofia", "força"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1037196793?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1037196793?loop=1&muted=1"
     },
     {
       "id": 99,
@@ -842,7 +842,7 @@
       "dificuldade": "Médio",
       "classificacao": ["definição", "hipertrofia", "força"],
       "localidade": "academia",
-      "video": "https://vimeo.com/1023815886?fl=pl&fe=sh"
+      "video": "https://player.vimeo.com/video/1023815886?loop=1&muted=1"
     },
     {
       "id": 100,
@@ -851,8 +851,7 @@
       "dificuldade": "Avançado",
       "classificacao": ["definição", "hipertrofia", "força"],
       "localidade": "academia",
-      "video": "https://vimeo.com/989056073?fl=pl&fe=sh"
-
+      "video": "https://player.vimeo.com/video/989056073?loop=1&muted=1"
     },
     {
       "id": 101,

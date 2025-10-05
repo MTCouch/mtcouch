@@ -44,14 +44,16 @@
 
         <div class="exercicios">
             <div class="scrool">
-                <div class="exercicio">
-                    <img id="img" src="teste.jpg" alt="imagem do exercicio">
-                    <div class="text">
-                        <h2 id="nome">Nome</h2>
-                        <p id="descricao">descricao</p>
-                    </div> 
-                    <input type="submit" value="Adicionar">
-                </div>
+                <%for(let i=0; i < 100; i++){ %>
+                    <div class="exercicio">
+                        <iframe id="img" src="<%= exercicios[i].video%> || 0"></iframe>
+                        <div class="text">
+                            <h2 id="nome"><%= exercicios[i].nome%></h2>
+                            <p id="descricao"><%= exercicios[i].agrupamento_muscular%></p>
+                        </div> 
+                        <input type="submit" value="Adicionar">
+                    </div>
+                <% } %>
             </div> 
         </div>
 

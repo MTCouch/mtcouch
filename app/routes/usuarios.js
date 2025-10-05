@@ -1,5 +1,5 @@
 var bcrypt = require('bcryptjs');
-var https = require('https');
+var fs = require("fs");
 
 module.exports = function(app){
     app.get('/login', function(request, response){
@@ -74,8 +74,11 @@ module.exports = function(app){
         response.render('usuarios/MTC_Form.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}});
     });
 
-    // EXERCÍCIOS - INTEGRAÇÃO COM API
-     app.get('/exercicios', function(request, response){
-        response.render('usuarios/exercicios.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}});
+    // EXERCÍCIOS
+    app.get('/exercicios', function(request, response){
+        const jsonData = fs.readFileSync("Exercicios.json", 'utf8');
+        var data = JSON.parse(jsonData);
+        response.render('usuarios/exercicios.ejs', { exercicios: data.exercicios });
     });
+            
 }
