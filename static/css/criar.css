@@ -104,7 +104,7 @@ option {
   background-color: var(--verde-primario); /* fundo da opção  */
 }
 
-input[type="button"]{
+input[type="submit"]{
     width: 200px;
     height: 40px;
     margin: 10px;
@@ -117,7 +117,7 @@ input[type="button"]{
     color: var(--font-color);
 }
 
-input[type="button"]:hover{
+input[type="submit"]:hover{
     background: var(--verde-secundario);
     cursor: pointer;
 }

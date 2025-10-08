@@ -1,4 +1,5 @@
 var bcrypt = require('bcryptjs');
+const session = require('express-session');
 var fs = require("fs");
 
 module.exports = function(app){
@@ -64,9 +65,30 @@ module.exports = function(app){
         });
     });
 
-    // CRIAÇÃO DE FICHAS DE TREINO
+    // CRIAÇÃO DE PLANILHAS DE TREINO
     app.get('/criar', function(request, response){
         response.render('usuarios/criar.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}});
+    });
+
+    app.post('/criar', function(request, response){
+        var connection = app.infra.connectionFactory();
+        var PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
+        var planilha = request.body;
+        request.assert('nome_treino','Nome da planilha é obrigatório!').notEmpty();
+        request.assert('descricao','A descrição é obrigatória!').notEmpty();
+        var erros = request.validationErrors();
+
+        if(erros){
+            connection.end();
+            return response.render('usuarios/criar.ejs', {errosValidacao: erros, usuario: planilha});
+        }
+        PlanilhasDAO.salvar(planilha, session.usuario.id, function(err, results){
+            connection.end();
+            if(err){
+                return response.send("Erro ao criar a planilha!");
+            }            
+            response.redirect('/exercicios');
+        });
     });
 
     // CRIAÇÃO COM IA

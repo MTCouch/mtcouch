@@ -17,32 +17,32 @@
     <div class="div5" ><a class="a" href="">Treino</a></div>
 </div>
 
+    <%if(errosValidacao.length > 0){%>
+        <ul>
+            <%errosValidacao.forEach(function(erro){%>
+                <li><%=erro.msg%></li>
+            <%});%>
+        </ul>
+    <%}%>
+
 <div class="conteiner">
     <div class="formulario">
-        <h1 class="criar">+ Criar</h1>
-            <form action="get">
+        <h1 class="criar">+ Criar Planilha</h1>
+            <form action="/criar" method="post">
 
-                <label for="nome_treino">Nome do ficha:
-                    <input type="text">
+                <label for="nome_treino">Nome da Planilha:
+                    <input id="nome_treino" name="nome_treino" type="text" placeholder="Nome da Planilha" required>
                 </label>
 
                 <br>
 
-                <label for="dias">Vezes por dia:    
-                <select name="dias" id="">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                </select>
+                <label for="descricao">Descrição da Planilha:
+                    <input id="descricao" name="descricao" type="text" placeholder="Descrição" required>
                 </label>
 
                 <br>
 
-                <input type="button" value="Criar">
+                <input type="submit" value="Criar">
 
             </form>
     </div>
