@@ -67,12 +67,13 @@ module.exports = function(app){
 
     // CRIAÇÃO DE PLANILHAS DE TREINO
     app.get('/criar', function(request, response){
-        response.render('usuarios/criar.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}});
+        response.render('usuarios/criar.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}, userId: request.session.usuario.id || {}});
     });
 
     app.post('/criar', function(request, response){
         var connection = app.infra.connectionFactory();
         var PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
+        var userId = request.session.usuario.id;
         var planilha = request.body;
         request.assert('nome_treino','Nome da planilha é obrigatório!').notEmpty();
         request.assert('descricao','A descrição é obrigatória!').notEmpty();
@@ -80,12 +81,12 @@ module.exports = function(app){
 
         if(erros){
             connection.end();
-            return response.render('usuarios/criar.ejs', {errosValidacao: erros, usuario: planilha});
+            return response.render('usuarios/criar.ejs', {errosValidacao: erros, planilha: planilha});
         }
-        PlanilhasDAO.salvar(planilha, session.usuario.id, function(err, results){
+        PlanilhasDAO.salvar(planilha, userId, function(err, results){
             connection.end();
             if(err){
-                return response.send("Erro ao criar a planilha!");
+                return response.send("Erro ao salvar planilha!");
             }            
             response.redirect('/exercicios');
         });
