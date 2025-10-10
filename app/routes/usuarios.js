@@ -88,7 +88,7 @@ module.exports = function(app){
             if(err){
                 return response.send("Erro ao salvar planilha!");
             }            
-            response.redirect('/exercicios');
+            response.redirect('/treino');
         });
     });
 
@@ -102,6 +102,11 @@ module.exports = function(app){
         const jsonData = fs.readFileSync("Exercicios.json", 'utf8');
         var data = JSON.parse(jsonData);
         response.render('usuarios/exercicios.ejs', { exercicios: data.exercicios });
+    });
+
+    // TREINO
+    app.get('/treino', function(request, response){
+        response.render('usuarios/criar_ficha.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}, planilha: planilha || {} });
     });
             
 }

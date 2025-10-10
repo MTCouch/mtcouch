@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar</title>
+    <title>Treino</title>
     <link rel="stylesheet" href="/static/css/reset.css">
     <link rel="stylesheet" href="/static/css/var.css">
     <link rel="stylesheet" href="/static/css/criar.css">
@@ -14,11 +14,21 @@
     <div class="div2" ><a class="a" href="/criar">Criar</a></div>
     <div class="div3" ><a class="a" href="/mtcf">MGCouch</a></div>
     <div class="div4" ><a class="a" href="/exercicios">Exercícios</a></div>
-    <div class="div5" ><a class="a" href="">Treino</a></div>
+    <div class="div5" ><a class="a" href="/treino">Treino</a></div>
 </div>
 
 <div class="conteiner">
     <div class="formulario">
+
+        <%for(let i=0; i < planilha.length; i++){ %>
+            <div class="">
+                <div class="">
+                    <h2 id="nome"><%= planilha[i].nome%></h2>
+                    <p id="descricao"><%= planilha[i].descricao%></p>
+                </div> 
+            </div>
+        <% } %>
+
         <h1 class="criar">+ Criar Ficha</h1>
             <form action="get">
 
