@@ -19,18 +19,8 @@
 
 <div class="conteiner">
     <div class="formulario">
-
-        <%for(let i=0; i < planilha.length; i++){ %>
-            <div class="">
-                <div class="">
-                    <h2 id="nome"><%= planilha[i].nome%></h2>
-                    <p id="descricao"><%= planilha[i].descricao%></p>
-                </div> 
-            </div>
-        <% } %>
-
         <h1 class="criar">+ Criar Ficha</h1>
-            <form action="get">
+            <form action="/treino" method="post">
 
                 <label for="nome_treino">Nome do ficha:
                     <input id="nome_treino" name="nome_treino" type="text">
@@ -58,7 +48,7 @@
 
                 <br>
 
-                <input type="button" value="Criar">
+                <input type="submit" value="Criar">
 
             </form>
     </div>
