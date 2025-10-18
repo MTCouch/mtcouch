@@ -9,7 +9,7 @@ PlanilhasDAO.prototype.salvar = function (planilha, userId, callback) {
 }
 
 PlanilhasDAO.prototype.buscarId = function (userId, callback) {
-    this._connection.query('SELECT id FROM fichas WHERE usuario_id = ?;',
+    this._connection.query('SELECT id FROM fichas WHERE id = ?;',
         [userId], callback);
 };
 
