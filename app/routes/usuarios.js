@@ -72,6 +72,32 @@ module.exports = function(app){
         response.render('usuarios/MTC_Form.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}});
     });
 
+    app.post('/mtcf', function(request, response){
+        var connection = app.infra.connectionFactory();
+        var MtcDAO = new app.infra.MtcDAO(connection);
+        var planilha = request.body;
+        request.assert('nome','O nome da planilha é obrigatório!').notEmpty();
+        request.assert('dias','A quantidade de dias é obrigatória!').notEmpty();
+        request.assert('experiencia','A experiência é obrigatória!').notEmpty();
+        request.assert('objetivo','O objetivo é obrigatório!').notEmpty();
+        var erros = request.validationErrors();
+
+        if(erros){
+            connection.end();
+            return response.render('usuarios/MTC_Form.ejs', {errosValidacao: erros, planilha: planilha});
+        }
+        MtcDAO.buscarTreino(planilha, function(err, results){
+            if(err){
+                connection.end();
+                return response.send("Erro ao buscar treino!");
+            }
+            if(results.length > 0){
+                // Supondo que results[0] contém a planilha gerada
+                response.render('usuarios/....ejs', {planilha: planilha});
+            }
+        });
+    });
+
     // CRIAÇÃO DE PLANILHAS DE TREINO
     app.get('/criar', function(request, response){
         response.render('usuarios/criar.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}, userId: request.session.usuario.id || {}});
@@ -116,13 +142,6 @@ module.exports = function(app){
                 });
             }            
         });
-
-        // v 1° FASE: conecxão com o banco 
-        // v 2° FASE: verificação dos itens preenchidos
-        // v 3° FASE: modulo para verificar o id da ficha (PlanilhaDAO)
-        // x 4° FASE: criação de modulo para salvar os dados da ficha (FichaDAO)
-        // x 5° FASE: resposta ao usuario (redirecionamento ou mensagem de erro)
-
     });
 
     // EXERCÍCIOS
