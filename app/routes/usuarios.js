@@ -148,17 +148,17 @@ module.exports = function(app){
                 connection.end();
                 return response.send("Erro ao buscar treino!" + err);
             }
-            if(results.length > 0){
+            if(results != null){
                 connection.end();
-                console.log(results);
-                response.render('usuarios/treino.ejs', {treino: results});
+                request.session.treino = results; // guarda o treino na sessão
+                response.render('usuarios/treino.ejs', {treino: results, usuario: request.session.usuario || {} });
             }
         });
     });
 
     // TREINO
     app.get('/treino', function(request, response){
-        response.render('usuarios/treino.ejs', { usuario: request.session.usuario || {} });
+        response.render('usuarios/treino.ejs', { usuario: request.session.usuario || {}, treino: request.session.treino || {} });
     });
             
 }

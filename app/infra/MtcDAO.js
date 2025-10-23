@@ -33,6 +33,7 @@ const systemInstructions = `
     5. Não invente informações médicas. Se o usuário mencionar problemas de saúde, **responda em JSON recomendando consulta com um profissional qualificado**.
     6. Mantenha respostas consistentes e sintaticamente válidas para fácil leitura por uma aplicação backend.
     7. Sempre retorne o treino exatamente no formato JSON abaixo, respeitando a mesma estrutura e chaves com o minimo de 6 exercicios por fichas.
+    8. Sempre que selecior um exercício com video, inclua o link do vídeo no campo "video". Caso não haja vídeo disponível, deixe o campo como null.-
 
     {
       "nome": "Treino de Hipertrofia - Intermediário",
@@ -41,13 +42,13 @@ const systemInstructions = `
           "nome": "Treino A - Peito e Tríceps",
           "exercicios": [
             {
-              "id": 1,
-              "nome": "Supino Reto com Barra",
-              "series": 4,
-              "repeticoes": "8-10",
-              "descanso": "60-90s",
-              "video": null,
-              "observacoes": "Manter os pés firmes e não arquear as costas."
+              "id": 51,
+              "nome": "Supino com Reto Halteres",
+              "agrupamento_muscular": "Peito",
+              "dificuldade": "Médio",
+              "classificacao": ["hipertrofia", "força"],
+              "localidade": "ambos",
+              "video": "https://player.vimeo.com/video/1037179539?loop=1&muted=1"
             },
             {
               "id": 8,
@@ -57,6 +58,15 @@ const systemInstructions = `
               "descanso": "60s",
               "video": null,
               "observacoes": "Controle o movimento na descida."
+            },
+            {
+            "id": 72,
+            "nome": "Crossover no Cabo",
+            "agrupamento_muscular": "Peito",
+            "dificuldade": "Médio",
+            "classificacao": ["definição"],
+            "localidade": "academia",
+            "video": "https://player.vimeo.com/video/1037179700?loop=1&muted=1"
             },
             {
               "id": 12,
@@ -100,13 +110,13 @@ const systemInstructions = `
               "observacoes": null
             },
             {
-              "id": 19,
-              "nome": "Rosca Martelo",
-              "series": 3,
-              "repeticoes": "10-12",
-              "descanso": "60s",
-              "video": null,
-              "observacoes": "Evite balançar o corpo."
+              "id": 56,
+              "nome": "Rosca Scott Com Barra W",
+              "agrupamento_muscular": "Biceps",
+              "dificuldade": "Médio",
+              "classificacao": ["força", "hipertrofia"],
+              "localidade": "academia",
+              "video": "https://player.vimeo.com/video/1038042113?loop=1&muted=1"
             },
             {
               "id": 33,
@@ -132,13 +142,22 @@ const systemInstructions = `
               "observacoes": "Manter o abdômen contraído."
             },
             {
-              "id": 10,
-              "nome": "Leg Press 45°",
-              "series": 3,
-              "repeticoes": "10-12",
-              "descanso": "60s",
-              "video": null,
-              "observacoes": null
+              "id": 53,
+              "nome": "Cadeira Flexora",
+              "agrupamento_muscular": "Pernas",
+              "dificuldade": "Médio",
+              "classificacao": ["hipertrofia", "força"],
+              "localidade": "academia",
+              "video": "https://player.vimeo.com/video/1037535114?loop=1&muted=1"
+            },
+            {
+              "id": 60,
+              "nome": "Passada",
+              "agrupamento_muscular": "Pernas",
+              "dificuldade": "Médio",
+              "classificacao": ["resistência", "hipertrofia"],
+              "localidade": "academia",
+              "video": "https://player.vimeo.com/video/281069235?loop=1&muted=1"
             },
             {
               "id": 18,
@@ -150,14 +169,14 @@ const systemInstructions = `
               "observacoes": "Evite bloquear os cotovelos no topo."
             },
             {
-              "id": 25,
-              "nome": "Elevação Frontal com Halteres",
-              "series": 3,
-              "repeticoes": "12",
-              "descanso": "45s",
-              "video": null,
-              "observacoes": null
-            }
+              "id": 68,
+              "nome": "Crucifixo Inverso com Halteres",
+              "agrupamento_muscular": "Ombros",
+              "dificuldade": "Fácil",
+              "classificacao": ["definição"],
+              "localidade": "ambos",
+              "video": "https://player.vimeo.com/video/981020409?loop=1&muted=1"
+            },
           ]
         }
       ]
@@ -187,8 +206,9 @@ MtcDAO.prototype.buscarTreino = async function (planilha, callback) {
     });
 
   const respostaIa = (response.choices[0].message.content);
+  console.log("Resposta da IA:", respostaIa);
   // Tratamento para remover quebras de linha e espaços extras
-  let respostaTratada = respostaIa.replace(/```json/g, '') .replace(/```/g, '') .trim();
+  let respostaTratada = respostaIa.replace(/```json/g, '').replace(/```/g, '').trim();
   const treino = JSON.parse(respostaTratada);
   console.log("Treino gerado com sucesso:", treino);
   callback(null, treino);
@@ -196,7 +216,7 @@ MtcDAO.prototype.buscarTreino = async function (planilha, callback) {
   } catch (err) {
     console.error("Erro ao gerar treino:", err);
     callback(err);
-  }
+  } 
 };
 
 module.exports = function () {

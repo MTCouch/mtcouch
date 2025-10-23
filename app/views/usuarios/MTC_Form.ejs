@@ -8,8 +8,45 @@
     <link rel="stylesheet" href="/static/css/var.css">
     <link rel="stylesheet" href="/static/css/MTC_Form.css">
     <link rel="stylesheet" href="/static/css/config_index.css">
+
+    <style>
+        /* tela de carregamento */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            font-size: 18px;
+            flex-direction: column;
+        }
+        #loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--verde-secundario);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .hidden {
+            display: none; /* Classe para ocultar */
+        }
+    </style>
 </head>
 <body>
+
+
+
 <div class="parent">
     <div class="div1" ><a class="a" href="/">LOGO</a></div>
     <div class="div2" ><a class="a" href="/criar">Criar</a></div>
@@ -62,7 +99,7 @@
                     </div>
 
                     <div class="button">
-                        <input type="submit" value="Testar Agora">
+                        <input type="submit" value="Testar Agora" onclick="carregando()">
                     </div>
 
                 </div>
@@ -70,6 +107,14 @@
         </div>
 
     </div>
+
+
+
+    <script>
+        function carregando(){
+            document.getElementById('loading-overlay').classList.add('hidden');
+        }
+    </script>
 
 </body>
 </html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTCouch - Treino</title>
+    <title>MTCouch</title>
     <link rel="stylesheet" href="/static/css/reset.css">
     <link rel="stylesheet" href="/static/css/var.css">
     <link rel="stylesheet" href="/static/css/exercicios.css">
@@ -12,47 +12,48 @@
 <body>
 
 <div class="parent">
-    <div class="div1"><a class="a" href="/">LOGO</a></div>
-    <div class="div2"><a class="a" href="/criar">Criar</a></div>
-    <div class="div3"><a class="a" href="/mtcf">MGCouch</a></div>
-    <div class="div4"><a class="a" href="/exercicios">Exercícios</a></div>
-    <div class="div5"><a class="a" href="/treino">Treino</a></div>
+    <div class="div1" ><a class="a" href="/">LOGO</a></div>
+    <div class="div2" ><a class="a" href="/criar">Criar</a></div>
+    <div class="div3" ><a class="a" href="/mtcf">MGCouch</a></div>
+    <div class="div4" ><a class="a" href="/exercicios">Exercícios</a></div>
+    <div class="div5" ><a class="a" href="/treino">Treino</a></div>
 </div>
 
 <div class="conteiner">
     <div class="formulario">
-        <div class="exercicios">
-            <% if (treino) { %>
-                <h1 class="titulo">Treino de <%= treino.objetivo %> — <%= treino.frequencia %> dias/semana</h1>
-                <h3 class="subtitulo">Nível: <%= treino.nivel %></h3>
+        <% if(treino){ %>
+        <h1><%= treino.nome %></h1>
+        
+        <% treino.fichas.forEach(ficha => { %>
+            <div class="ficha">
+                <h2><%= ficha.nome %></h2>
+                <div class="exercicios">
+                    <div class="scrool">
+                        <% ficha.exercicios.forEach(exercicio => { %>
+                            <div class="exercicio">
+                                <iframe id="img" src="<%= exercicio.video %>"></iframe>
 
-                <% treino.dias.forEach((dia, indexDia) => { %>
-                    <div class="dia">
-                        <h2 class="nome-dia"><%= dia.nome %></h2>
-
-                        <% if (dia.exercicios && dia.exercicios.length > 0) { %>
-                            <% dia.exercicios.forEach((ex) => { %>
-                                <div class="exercicio">
-                                    <% if (ex.video) { %>
-                                        <iframe class="video" src="<%= ex.video %>" allowfullscreen></iframe>
+                                <h3 id="nome" class="nomeExercicio"><%= exercicio.nome %></h3>
+                                <div class="text">
+                                    <p class="seriesExercicios"><strong>Séries:</strong> <%= exercicio.series %></p>
+                                    <p class="repeticoesExercicios"><strong>Repetições:</strong> <%= exercicio.repeticoes %></p>
+                                    <p class="descansoExercicios"><strong>Descanso:</strong> <%= exercicio.descanso %></p>
+                                    <% if (exercicio.observacoes) { %>
+                                        <p class="observacoesExercicios"><strong>Observações:</strong> <%= exercicio.observacoes %></p>
                                     <% } %>
-                                    <div class="text">
-                                        <h3><%= ex.nome %></h3>
-                                        <p><strong>Séries:</strong> <%= ex.series %> — <strong>Repetições:</strong> <%= ex.repeticoes %></p>
-                                    </div>
-                                </div>
-                            <% }); %>
-                        <% } else { %>
-                            <p>Nenhum exercício listado para este dia.</p>
-                        <% } %>
-                    </div>
-                <% }); %>
-
-            <% } else { %>
-                <p>Nenhum treino encontrado.</p>
-            <% } %>
-        </div>
+                                </div> 
+                            </div>
+                        <% }); %>
+                    </div> 
+                </div>
+            </div>
+        <% }); %>
+        <% } else { %>
+            <h2>Nenhum treino encontrado.</h2>
+        <% } %>
     </div>
+</div>
+
 </div>
 </body>
 </html>
