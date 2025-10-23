@@ -67,37 +67,6 @@ module.exports = function(app){
         });
     });
 
-    // CRIAÇÃO COM IA
-    app.get('/mtcf', function(request, response){
-        response.render('usuarios/MTC_Form.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}});
-    });
-
-    app.post('/mtcf', function(request, response){
-        var connection = app.infra.connectionFactory();
-        var MtcDAO = new app.infra.MtcDAO(connection);
-        var planilha = request.body;
-        request.assert('nome','O nome da planilha é obrigatório!').notEmpty();
-        request.assert('dias','A quantidade de dias é obrigatória!').notEmpty();
-        request.assert('experiencia','A experiência é obrigatória!').notEmpty();
-        request.assert('objetivo','O objetivo é obrigatório!').notEmpty();
-        var erros = request.validationErrors();
-
-        if(erros){
-            connection.end();
-            return response.render('usuarios/MTC_Form.ejs', {errosValidacao: erros, planilha: planilha});
-        }
-        MtcDAO.buscarTreino(planilha, function(err, results){
-            if(err){
-                connection.end();
-                return response.send("Erro ao buscar treino!");
-            }
-            if(results.length > 0){
-                // Supondo que results[0] contém a planilha gerada
-                response.render('usuarios/....ejs', {planilha: planilha});
-            }
-        });
-    });
-
     // CRIAÇÃO DE PLANILHAS DE TREINO
     app.get('/criar', function(request, response){
         response.render('usuarios/criar.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}, userId: request.session.usuario.id || {}});
@@ -151,9 +120,45 @@ module.exports = function(app){
         response.render('usuarios/exercicios.ejs', { exercicios: data.exercicios });
     });
 
+        // CRIAÇÃO COM IA
+    app.get('/mtcf', function(request, response){
+        console.log("Entrou no get do MTC");
+        response.render('usuarios/MTC_Form.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}});
+    });
+
+    app.post('/mtcf', function(request, response){
+        var connection = app.infra.connectionFactory();
+        var MtcDAO = new app.infra.MtcDAO(connection);
+        var planilha = request.body;
+        request.assert('nome','O nome da planilha é obrigatório!').notEmpty();
+        request.assert('dias','A quantidade de dias é obrigatória!').notEmpty();
+        request.assert('experiencia','A experiência é obrigatória!').notEmpty();
+        request.assert('objetivo','O objetivo é obrigatório!').notEmpty();
+        var erros = request.validationErrors();
+
+        if(erros){
+            connection.end();
+            console.log("Erros na validação" + erros);
+            return response.render('usuarios/MTC_Form.ejs', {errosValidacao: erros, planilha: planilha});
+        } else {
+            console.log("Passou na validação");
+        }
+        MtcDAO.buscarTreino(planilha, function(err, results){
+            if(err){
+                connection.end();
+                return response.send("Erro ao buscar treino!" + err);
+            }
+            if(results.length > 0){
+                connection.end();
+                console.log(results);
+                response.render('usuarios/treino.ejs', {treino: results});
+            }
+        });
+    });
+
     // TREINO
     app.get('/treino', function(request, response){
-        response.render('usuarios/criar_ficha.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}, userId: request.session.usuario.id || {}});
+        response.render('usuarios/treino.ejs', { usuario: request.session.usuario || {} });
     });
             
 }

@@ -1,28 +1,14 @@
 function MtcDAO(connection) {
-    this._connection = connection;
+  this._connection = connection;
 }
 
-MtcDAO.prototype.buscarTreino = function (planilha, callback) {
-    import { AzureOpenAI } from "openai";
-import * as fs from 'fs';
-import * as path from 'path';
+const { AzureOpenAI } = require("openai");
+const fs = require("fs");
+const path = require("path");
 
-const endpoint = "https://carlo-mekj9ulp-eastus2.cognitiveservices.azure.com/";
-const modelName = "gpt-4o-mini"; // Mantendo o modelo que você usou
-const deployment = "gpt-4o-mini"; // Mantendo o deployment que você usou
-
-export async function main() {
-
-  const exerciciosFilePath = path.join('Exercicios.json');
-  const exerciciosJson = fs.readFileSync(exerciciosFilePath, 'utf8');
-  const apiKey = "4hdJfA52VGyPt9HMz9fY1v6ZTARldybnZtSGfvqf3y5c4U7H6YNRJQQJ99BHACHYHv6XJ3w3AAAAACOGuUpn";
-  const apiVersion = "2024-04-01-preview";
-  const options = { endpoint, apiKey, deployment, apiVersion }
-
-  const client = new AzureOpenAI(options);
-
-  // Armazenando as instruções em uma string para melhor legibilidade
-  const systemInstructions = `
+const exerciciosFilePath = path.join("./Exercicios.json");
+const exerciciosJson = fs.readFileSync(exerciciosFilePath, "utf8");
+const systemInstructions = `
     Contexto:
     Você é um assistente especializado em montar treinos personalizados no formato JSON, com base em um arquivo de exercícios (também em JSON) e nas informações fornecidas pelo usuário.
     Aqui está o arquivo de exercícios disponível para consulta:
@@ -46,8 +32,7 @@ export async function main() {
     4. Caso faltem informações do usuário, **solicite os dados necessários em JSON** antes de montar o treino.
     5. Não invente informações médicas. Se o usuário mencionar problemas de saúde, **responda em JSON recomendando consulta com um profissional qualificado**.
     6. Mantenha respostas consistentes e sintaticamente válidas para fácil leitura por uma aplicação backend.
-
-    Sempre retorne o treino exatamente no formato JSON abaixo, respeitando a mesma estrutura e chaves com o minimo de 6 exercicios por fichas.
+    7. Sempre retorne o treino exatamente no formato JSON abaixo, respeitando a mesma estrutura e chaves com o minimo de 6 exercicios por fichas.
 
     {
       "nome": "Treino de Hipertrofia - Intermediário",
@@ -179,38 +164,41 @@ export async function main() {
     }
     `;
 
-     
+MtcDAO.prototype.buscarTreino = async function (planilha, callback) {
+  try {
+    const apiKey = "4hdJfA52VGyPt9HMz9fY1v6ZTARldybnZtSGfvqf3y5c4U7H6YNRJQQJ99BHACHYHv6XJ3w3AAAAACOGuUpn";
+    const endpoint = "https://carlo-mekj9ulp-eastus2.cognitiveservices.azure.com/";
+    const deployment = "gpt-4o-mini";
+    const apiVersion = "2024-04-01-preview";
 
-  const response = await client.chat.completions.create({
-    messages: [
-      { 
-        role: "system", 
-        content: systemInstructions // Passando as instruções detalhadas
-      },
-      { 
-        // Exemplo de como o usuário faria o pedido
-        role: "user", 
-        content: "Quero um treino focado em hipertrofia, com frequência de 4x por semana (abcd) e nível avançado." 
-      }
-    ],
-    stream: true,
-    max_tokens: 4096,
-    temperature: 0.2, // Mantido baixo para respostas mais determinísticas (JSON)
-    top_p: 0.8,
-    model: modelName
-  });
+    const client = new AzureOpenAI({ endpoint, apiKey, apiVersion });
 
-  for await (const part of response) {
-    process.stdout.write(part.choices[0]?.delta?.content || '');
+    const messages = [
+      { role: "system", content: systemInstructions},
+      { role: "user", content: "Quero um treino de "+ planilha.objetivo+" para "+ planilha.dias +" dias por semana, nível "+ planilha.experiencia +"."},
+    ];
+
+    const response = await client.chat.completions.create({
+      model: deployment,
+      messages,
+      max_tokens: 5000,
+      top_p: 0.8,
+      temperature: 0.2,
+    });
+
+  const respostaIa = (response.choices[0].message.content);
+  // Tratamento para remover quebras de linha e espaços extras
+  let respostaTratada = respostaIa.replace(/```json/g, '') .replace(/```/g, '') .trim();
+  const treino = JSON.parse(respostaTratada);
+  console.log("Treino gerado com sucesso:", treino);
+  callback(null, treino);
+
+  } catch (err) {
+    console.error("Erro ao gerar treino:", err);
+    callback(err);
   }
-  process.stdout.write('\n');
-}
-
-main().catch((err) => {
-  console.error("The sample encountered an error:", err);
-});
-}
+};
 
 module.exports = function () {
-    return MtcDAO;
-}
+  return MtcDAO;
+};
