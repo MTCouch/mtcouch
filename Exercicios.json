@@ -5,394 +5,558 @@
       "nome": "Supino Reto com Barra",
       "agrupamento_muscular": "Peito",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1037179521?loop=1&muted=1"
     },
     {
       "id": 2,
       "nome": "Remada Curvada com Barra",
       "agrupamento_muscular": "Costas",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia", "resistência"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia",
+        "resistência"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1037659857?loop=1&muted=1"
     },
     {
       "id": 3,
       "nome": "Agachamento Livre",
       "agrupamento_muscular": "Pernas",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia", "definição", "emagrecimento"],
-      "localidade": "ambos"
+      "classificacao": [
+        "hipertrofia",
+        "definição",
+        "emagrecimento"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/591558168?loop=1&muted=1"
     },
     {
       "id": 4,
       "nome": "Desenvolvimento de Ombros com Halteres",
       "agrupamento_muscular": "Ombros",
       "dificuldade": "Avançado",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1104255835?loop=1&muted=1"
     },
     {
       "id": 5,
       "nome": "Rosca Bíceps Direta",
       "agrupamento_muscular": "Braços",
       "dificuldade": "Fácil",
-      "classificacao": ["hipertrofia"],
-      "localidade": "ambos"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/1038623181?loop=1&muted=1"
     },
     {
       "id": 6,
       "nome": "Prancha Isométrica",
       "agrupamento_muscular": "Abdômen",
       "dificuldade": "Médio",
-      "classificacao": ["definição", "resistência"],
-      "localidade": "casa"
+      "classificacao": [
+        "definição",
+        "resistência"
+      ],
+      "localidade": "casa",
+      "video": "https://player.vimeo.com/video/591786362?loop=1&muted=1"
     },
     {
       "id": 7,
       "nome": "Burpee",
       "agrupamento_muscular": "Full Body",
       "dificuldade": "Avançado",
-      "classificacao": ["emagrecimento", "resistência"],
-      "localidade": "ambos"
+      "classificacao": [
+        "emagrecimento",
+        "resistência"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/1038623765?loop=1&muted=1"
     },
     {
       "id": 8,
       "nome": "Supino Inclinado com Halteres",
       "agrupamento_muscular": "Peito",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1037179834?loop=1&muted=1"
     },
     {
       "id": 9,
       "nome": "Puxada na Barra Fixa",
       "agrupamento_muscular": "Costas",
       "dificuldade": "Avançado",
-      "classificacao": ["hipertrofia", "resistência"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia",
+        "resistência"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1037659523?loop=1&muted=1"
     },
     {
       "id": 10,
       "nome": "Leg Press 45°",
       "agrupamento_muscular": "Pernas",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1037528012?loop=1&muted=1"
     },
     {
       "id": 11,
       "nome": "Elevação Lateral com Halteres",
       "agrupamento_muscular": "Ombros",
       "dificuldade": "Fácil",
-      "classificacao": ["hipertrofia"],
-      "localidade": "ambos"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/1121013241?loop=1&muted=1"
     },
     {
       "id": 12,
       "nome": "Tríceps Pulley",
       "agrupamento_muscular": "Braços",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1121012975?loop=1&muted=1"
     },
     {
       "id": 13,
       "nome": "Abdominal Crunch na Máquina",
       "agrupamento_muscular": "Abdômen",
       "dificuldade": "Fácil",
-      "classificacao": ["definição"],
-      "localidade": "academia"
+      "classificacao": [
+        "definição"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/913635744?loop=1&muted=1"
     },
     {
       "id": 14,
-      "nome": "Supino reto com halteres",
-      "agrupamento_muscular": "Peito",
-      "dificuldade": "Fácil",
-      "classificacao": ["emagrecimento", "resistência"],
-      "localidade": "academia",
-      "video": "https://player.vimeo.com/video/1057885975?loop=1&muted=1"
+      "nome": "Mountain Climbers",
+      "agrupamento_muscular": "Full Body",
+      "dificuldade": "Médio",
+      "classificacao": [
+        "emagrecimento",
+        "resistência"
+      ],
+      "localidade": "casa",
+      "video": "https://player.vimeo.com/video/950178355?loop=1&muted=1"
     },
     {
       "id": 15,
       "nome": "Flexão de Braços Clássica",
       "agrupamento_muscular": "Peito",
       "dificuldade": "Fácil",
-      "classificacao": ["hipertrofia", "emagrecimento"],
-      "localidade": "ambos"
+      "classificacao": [
+        "hipertrofia",
+        "emagrecimento"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/950179484?loop=1&muted=1"
     },
     {
       "id": 16,
       "nome": "Remada Baixa no Cabo",
       "agrupamento_muscular": "Costas",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1119190640?loop=1&muted=1"
     },
     {
       "id": 17,
       "nome": "Afundos com Halteres",
       "agrupamento_muscular": "Pernas",
       "dificuldade": "Médio",
-      "classificacao": ["definição", "emagrecimento"],
-      "localidade": "ambos"
+      "classificacao": [
+        "definição",
+        "emagrecimento"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/1121013246?loop=1&muted=1"
     },
     {
       "id": 18,
       "nome": "Press Militar com Barra",
       "agrupamento_muscular": "Ombros",
       "dificuldade": "Avançado",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/498732376?loop=1&muted=1"
     },
     {
       "id": 19,
       "nome": "Rosca Martelo",
       "agrupamento_muscular": "Braços",
       "dificuldade": "Fácil",
-      "classificacao": ["hipertrofia"],
-      "localidade": "ambos"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/1028440340?loop=1&muted=1"
     },
     {
       "id": 20,
       "nome": "Russian Twist",
       "agrupamento_muscular": "Abdômen",
       "dificuldade": "Médio",
-      "classificacao": ["definição"],
-      "localidade": "casa"
+      "classificacao": [
+        "definição"
+      ],
+      "localidade": "casa",
+      "video": "https://player.vimeo.com/video/975246138?loop=1&muted=1"
     },
     {
       "id": 21,
       "nome": "Jump Squat",
       "agrupamento_muscular": "Pernas",
       "dificuldade": "Avançado",
-      "classificacao": ["emagrecimento", "resistência"],
-      "localidade": "ambos"
+      "classificacao": [
+        "emagrecimento",
+        "resistência"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/1038625094?loop=1&muted=1"
     },
     {
       "id": 22,
       "nome": "Supino Declinado",
       "agrupamento_muscular": "Peito",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1037179746?loop=1&muted=1"
     },
     {
       "id": 23,
       "nome": "Pulldown Frente",
       "agrupamento_muscular": "Costas",
-      "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
+      "dificuldade": "Fácil",
+      "classificacao": [
+        "hipertrofia"
+      ],
       "localidade": "academia",
-      "video": "https://player.vimeo.com/video/1038041274?loop=1&muted=1"
+      "video": "https://player.vimeo.com/video/1028435050?loop=1&muted=1"
     },
     {
       "id": 24,
       "nome": "Extensão de Pernas na Cadeira",
       "agrupamento_muscular": "Pernas",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/950177326?loop=1&muted=1"
     },
     {
       "id": 25,
       "nome": "Elevação Frontal com Halteres",
       "agrupamento_muscular": "Ombros",
       "dificuldade": "Fácil",
-      "classificacao": ["hipertrofia"],
-      "localidade": "ambos"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/1121013167?loop=1&muted=1"
     },
     {
       "id": 26,
       "nome": "Tríceps Francês",
       "agrupamento_muscular": "Braços",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "ambos"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/1121012769?loop=1&muted=1"
     },
     {
       "id": 27,
       "nome": "Leg Raise na Barra",
       "agrupamento_muscular": "Abdômen",
       "dificuldade": "Avançado",
-      "classificacao": ["definição"],
-      "localidade": "academia"
+      "classificacao": [
+        "definição"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/980279132?loop=1&muted=1"
     },
     {
       "id": 28,
       "nome": "High Knees",
       "agrupamento_muscular": "Full Body",
       "dificuldade": "Fácil",
-      "classificacao": ["emagrecimento"],
-      "localidade": "casa"
+      "classificacao": [
+        "emagrecimento"
+      ],
+      "localidade": "casa",
+      "video": "https://player.vimeo.com/video/897698744?loop=1&muted=1"
     },
     {
       "id": 29,
       "nome": "Flexão Diamante",
       "agrupamento_muscular": "Peito",
       "dificuldade": "Avançado",
-      "classificacao": ["hipertrofia", "resistência"],
-      "localidade": "casa"
+      "classificacao": [
+        "hipertrofia",
+        "resistência"
+      ],
+      "localidade": "casa",
+      "video": "https://player.vimeo.com/video/950169625?loop=1&muted=1"
     },
     {
       "id": 30,
       "nome": "Remada Unilateral com Haltere",
       "agrupamento_muscular": "Costas",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "ambos"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/494015613?loop=1&muted=1"
     },
     {
       "id": 31,
       "nome": "Stiff com Barra",
       "agrupamento_muscular": "Pernas",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia", "definição"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia",
+        "definição"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1127524036?loop=1&muted=1"
     },
     {
       "id": 32,
       "nome": "Face Pull no Cabo",
       "agrupamento_muscular": "Ombros",
       "dificuldade": "Fácil",
-      "classificacao": ["definição", "resistência"],
-      "localidade": "academia"
+      "classificacao": [
+        "definição",
+        "resistência"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1127520576?loop=1&muted=1"
     },
     {
       "id": 33,
       "nome": "Rosca Concentrada",
       "agrupamento_muscular": "Braços",
       "dificuldade": "Fácil",
-      "classificacao": ["hipertrofia"],
-      "localidade": "ambos"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/1078148754?loop=1&muted=1"
     },
     {
       "id": 34,
       "nome": "Bicicleta Abdominal",
       "agrupamento_muscular": "Abdômen",
       "dificuldade": "Médio",
-      "classificacao": ["definição", "emagrecimento"],
-      "localidade": "casa"
+      "classificacao": [
+        "definição",
+        "emagrecimento"
+      ],
+      "localidade": "casa",
+      "video": "https://player.vimeo.com/video/1018005826?loop=1&muted=1"
     },
     {
       "id": 35,
-      "nome": "",
-      "agrupamento_muscular": "Full Body",
+      "nome": "Sissy-Squat",
+      "agrupamento_muscular": "Pernas",
       "dificuldade": "Avançado",
-      "classificacao": ["hipertrofia", "emagrecimento"],
-      "localidade": "ambos"
+      "classificacao": [
+        "definição",
+        "emagrecimento"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1127513546?loop=1&muted=1"
     },
     {
       "id": 36,
       "nome": "Crucifixo com Halteres",
       "agrupamento_muscular": "Peito",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1037179607?loop=1&muted=1"
     },
     {
       "id": 37,
       "nome": "Remada T-Bar",
       "agrupamento_muscular": "Costas",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1121015416?loop=1&muted=1"
     },
     {
       "id": 38,
       "nome": "Flexão de Pernas Deitado",
       "agrupamento_muscular": "Pernas",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1045610121?loop=1&muted=1"
     },
     {
       "id": 39,
       "nome": "Upright Row com Barra",
       "agrupamento_muscular": "Ombros",
       "dificuldade": "Avançado",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1028442027?loop=1&muted=1"
     },
     {
       "id": 40,
       "nome": "Mergulho em Paralelas",
       "agrupamento_muscular": "Braços",
       "dificuldade": "Avançado",
-      "classificacao": ["hipertrofia", "resistência"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia",
+        "resistência"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/748280177?loop=1&muted=1"
     },
     {
       "id": 41,
       "nome": "Flutter Kicks",
       "agrupamento_muscular": "Abdômen",
       "dificuldade": "Médio",
-      "classificacao": ["definição"],
-      "localidade": "casa"
+      "classificacao": [
+        "definição"
+      ],
+      "localidade": "casa",
+      "video": "https://player.vimeo.com/video/1038624899?loop=1&muted=1"
     },
     {
       "id": 42,
       "nome": "Kettlebell Swing",
       "agrupamento_muscular": "Full Body",
       "dificuldade": "Médio",
-      "classificacao": ["emagrecimento", "resistência"],
-      "localidade": "academia"
+      "classificacao": [
+        "emagrecimento",
+        "resistência"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1115946607?loop=1&muted=1"
     },
     {
       "id": 43,
       "nome": "Peck Deck",
       "agrupamento_muscular": "Peito",
       "dificuldade": "Fácil",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1037179710?loop=1&muted=1"
     },
     {
       "id": 44,
       "nome": "Shrugs com Halteres",
       "agrupamento_muscular": "Costas",
       "dificuldade": "Fácil",
-      "classificacao": ["hipertrofia"],
-      "localidade": "ambos"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/1121013337?loop=1&muted=1"
     },
     {
       "id": 45,
       "nome": "Hack Squat",
       "agrupamento_muscular": "Pernas",
       "dificuldade": "Avançado",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/958112020?loop=1&muted=1"
     },
     {
       "id": 46,
       "nome": "Elevação de Panturrilha em Pé",
       "agrupamento_muscular": "Pernas",
       "dificuldade": "Fácil",
-      "classificacao": ["hipertrofia", "resistência"],
-      "localidade": "ambos"
+      "classificacao": [
+        "hipertrofia",
+        "resistência"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/1117963119?loop=1&muted=1"
     },
     {
       "id": 47,
       "nome": "Arnold Press",
       "agrupamento_muscular": "Ombros",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "ambos"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "ambos",
+      "video": "https://player.vimeo.com/video/1038623101?loop=1&muted=1"
     },
     {
       "id": 48,
       "nome": "Rosca Scott",
       "agrupamento_muscular": "Braços",
       "dificuldade": "Médio",
-      "classificacao": ["hipertrofia"],
-      "localidade": "academia"
+      "classificacao": [
+        "hipertrofia"
+      ],
+      "localidade": "academia",
+      "video": "https://player.vimeo.com/video/1028418301?loop=1&muted=1"
     },
     {
       "id": 49,
       "nome": "V-Ups",
       "agrupamento_muscular": "Abdômen",
       "dificuldade": "Avançado",
-      "classificacao": ["definição", "resistência"],
-      "localidade": "casa"
+      "classificacao": [
+        "definição",
+        "resistência"
+      ],
+      "localidade": "casa",
+      "video": "https://player.vimeo.com/video/950184775?loop=1&muted=1"
     },
     {
       "id": 50,
