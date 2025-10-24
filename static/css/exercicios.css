@@ -73,7 +73,6 @@ iframe{
 .exercicio{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     gap: 1rem;
     background: var(--verde-primario);
     border-radius: 10px;
@@ -96,15 +95,31 @@ input[type="submit"]{
     cursor: pointer;
 }
 
-.text{
+.dvd{
+    display: flex;
+    flex-direction: row;
+}
+
+.text_Detalhes_Exercicio{
     display: flex;
     flex-direction: column;
     text-align: left;
     margin: 10px;
 }
 
-.nomeExercicio{
-    margin-top: 0;
+.text_Nome_Exercicio{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 10px;
+}
+
+.text_Nome_Ficha{
+    margin-left: 20px;
+}
+
+.observacoesExercicios{
+    max-width: 200px;
 }
 
 input[type="text"]{

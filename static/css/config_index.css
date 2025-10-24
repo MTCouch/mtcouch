@@ -5,6 +5,12 @@ body{
     color: var(--font-color);
 }
 
+img{
+    width: 100px;
+    height: auto;
+    margin: 10px;
+}
+
 .div2, .div3, .div4, .div5 {
     width: 200px;
     height: 50px;
@@ -25,7 +31,7 @@ body{
 .parent {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     gap: 8px;
     margin-top: 10px;
 }
@@ -74,7 +80,7 @@ body{
     grid-column-start: 5;
     grid-row-start: 6;
 }
-/*
+
 p, label{
     font-size: large;
     font-family: 'League Spartan', sans-serif;

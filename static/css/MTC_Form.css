@@ -87,6 +87,18 @@ select{
     color: var(--font-color);
 }
 
+.input_button{
+    width: 200px;
+    height: 50px;
+    color: antiquewhite;
+    font-size: larger;
+    background: none;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid var(--verde-secundario);
+}
+
 option {
   background-color: var(--verde-primario); /* fundo da opção  */
 }
