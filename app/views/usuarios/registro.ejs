@@ -28,13 +28,14 @@
     <div class="content">
         <div class="text_login">
             <p>Conheça o</p>
-            <p style="color: var(--verde-secundario);">MTC</p>
+            <p class="nome">MTC</p>
             <p class="p_text">O seu personal</p>
             <p class="p_text">particular</p>
         </div>
     
         <div class="form">    
             <form action="/registro" method="POST">
+                <div class="center">
                 <div>
                     <input type="email" id="email" name="email" class="input_info" placeholder="Email" required/>
                 </div>
@@ -52,10 +53,10 @@
                 </div>
                 <%}%>
                 <input class="input_button" type="submit" value="Cadastrar"/>
+                </div>
             </form>
         </div>
     </div>
 
-    <a href="/">Home</a>
 </body>
 </html>

@@ -81,7 +81,7 @@ img{
     grid-row-start: 6;
 }
 
-p, label{
+p, a, label{
     font-size: large;
     font-family: 'League Spartan', sans-serif;
 }

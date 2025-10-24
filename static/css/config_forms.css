@@ -56,6 +56,11 @@ img{
     grid-column-start: 7;
 }
         
+p, a, label{
+    font-size: large;
+    font-family: 'League Spartan', sans-serif;
+}
+
 h1, h2, h3, p{
     font-family: 'League Spartan', sans-serif;
 }

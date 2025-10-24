@@ -17,11 +17,23 @@ input{
     margin-top: 10px;
 }
 
+.center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /*  TEXTO  */
 
 p{
     font-size: 100px;
     font-weight: bold;
+    margin: -30px;
+}
+
+.nome{
+    color: var(--verde-secundario);
+    font-size: 150px;
 }
 
 .p_text{

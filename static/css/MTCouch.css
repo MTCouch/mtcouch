@@ -2,10 +2,31 @@
     font-family: 'League Spartan', sans-serif;
 }
 
-main{
-    
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
+.nome{
+    font-size: 100px;
+    color: var(--font-color);
+    margin-bottom: -50px;
+}
+
+.descricao{
+    color: var(--font-color);
+    margin-bottom: 40px;
+    text-align: justify;
+    width: 600px;
+}
+
+h2{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
 
 input[type="button"]{
     width: 400px;
