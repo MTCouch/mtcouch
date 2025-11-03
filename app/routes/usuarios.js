@@ -159,7 +159,46 @@ module.exports = function(app){
     });
 
 
-    app.get('/fichas', function(request, response){
-        response.render('usuarios/fichas.ejs', {usuario: request.session.usuario || {}});
+    app.get('/fichas', function(request, response) {
+        console.log("🟢 [GET /fichas] Rota acessada!");
+
+        // Mostra se há usuário na sessão
+        if (request.session.usuario) {
+            console.log("👤 Usuário logado:", request.session.usuario.nome || request.session.usuario.id);
+        } else {
+            console.warn("⚠️ Nenhum usuário logado na sessão!");
+        }
+
+        // Cria conexão com o banco
+        var connection = app.infra.connectionFactory();
+        var UsuariosDAO = new app.infra.UsuariosDAO(connection);
+
+        console.log("🔄 Iniciando consulta de fichas no banco...");
+
+        UsuariosDAO.viewFichas(request, function(err, results) {
+            if (err) {
+                console.error("❌ Erro ao buscar fichas:", err);
+                return response.status(500).send("Erro ao buscar fichas! " + err);
+            }
+
+            // Log de sucesso
+            console.log("✅ Consulta finalizada com sucesso!");
+            console.log(`📊 Total de fichas encontradas: ${results.length}`);
+
+            if (results.length > 0) {
+                console.table(results); // Mostra tabela bonita no console
+            } else {
+                console.log("ℹ️ Nenhuma ficha encontrada para este usuário.");
+            }
+
+            // Renderiza a view
+            response.render('usuarios/fichas.ejs', {
+                usuario: request.session.usuario || {},
+                fichas: results || []
+            });
+
+            console.log("📤 View 'usuarios/fichas.ejs' renderizada com dados!");
+        });
     });
+
 }

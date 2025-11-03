@@ -12,6 +12,11 @@ UsuariosDAO.prototype.salvar = function (usuario, callback) {
         usuario, callback);
 }
 
+UsuariosDAO.prototype.viewFichas = function (request, callback) {
+    this._connection.query('select * from fichas where usuario_id = ?',
+        [request.session.usuario.id], callback);
+}
+
 module.exports = function () {
     return UsuariosDAO;
 }
