@@ -158,9 +158,8 @@ module.exports = function(app){
         });
     });
 
-    // TREINO
-    app.get('/treino', function(request, response){
-        response.render('usuarios/treino.ejs', { usuario: request.session.usuario || {}, treino: request.session.treino || {} });
+
+    app.get('/fichas', function(request, response){
+        response.render('usuarios/fichas.ejs', {usuario: request.session.usuario || {}});
     });
-            
 }
