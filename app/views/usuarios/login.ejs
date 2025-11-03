@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="/static/css/reset.css">
     <link rel="stylesheet" href="/static/css/var.css">
+    <link rel="stylesheet" href="/static/css/configuracoes.css">
     <link rel="stylesheet" href="/static/css/config_forms.css">
     <link rel="stylesheet" href="/static/css/login.css">
 
@@ -29,14 +30,14 @@
             <form action="/login" method="POST">
                 <div class="center">
                 <div>
-                    <input type="email" id="email" name="email" class="input_info" placeholder="Email" required/>
+                    <input type="email" id="email" name="email" class="input" placeholder="Email" required/>
                 </div>
                 <div>
-                    <input type="password" id="senha" name="senha" class="input_info" placeholder="Senha" required/>
+                    <input type="password" id="senha" name="senha" class="input" placeholder="Senha" required/>
                 </div>
                 <label for="senha" class="esqueceu_sua_senha">Não tem uma conta? <a href="/registro">Registrar</a></label>
 
-                <input class="input_button" type="submit" value="Logar"/>
+                <input type="submit" value="Logar"/>
                 </div>
             </form>
         </div>

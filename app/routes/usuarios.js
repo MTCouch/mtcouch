@@ -59,9 +59,11 @@ module.exports = function(app){
             usuario.senha = hash;
             usuariosDAO.salvar(usuario, function(err, results){
                 if(err){
+                    response.render('usuarios/login.ejs', {erro: 'Erro ao salvar usuário!!'});
                     return response.send('Erro ao salvar usuário!');
+                } else {
+                    response.redirect('/login');
                 }
-                response.redirect('/logout');
             });
             connection.end();
         });

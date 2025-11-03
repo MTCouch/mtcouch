@@ -1,0 +1,97 @@
+/* TIPOGRAFIA */
+*{
+    font-family: 'League Spartan', sans-serif;
+}
+
+/* COLORAÇÃO DO FUNDO */
+body{
+    background: var(--fundo);
+    height: 100%;
+    width: 100%;
+    color: var(--font-color);
+}
+
+/* TAMANHO IMG */
+img{
+    width: 100px;
+    height: auto;
+    margin: 10px;
+}
+
+/* TAMANHO PADRONIZADO */
+
+p, a, label{
+    font-size: large;
+}
+
+/* PADRONIZAÇÃO DOS LINKS */
+a{
+    color: var(--font-color);
+    font-size: xx-large;
+    text-decoration: none;
+}
+
+/* INPUT'S PADRONIZADOS */
+input[type="text"]{
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    margin: 10px;
+    text-align: left;
+    background: none;
+    border-radius: 100px;
+    border: 2px solid var(--verde-secundario);
+    color: var(--font-color);
+}
+
+input[type="button"]{
+    width: 400px;
+    height: 50px;
+    text-align: center;
+    background: none;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: none;
+    border: 2px solid var(--verde-secundario);
+    color: var(--font-color);
+}
+
+input[type="button"]:hover{
+    background: var(--verde-secundario);
+    cursor: pointer;
+}
+
+input[type="submit"]{
+    width: 200px;
+    height: 40px;
+    margin: 10px;
+    text-align: center;
+    background: none;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: none;
+    border: 2px solid var(--verde-secundario);
+    color: var(--font-color);
+}
+
+input[type="submit"]:hover{
+    background: var(--verde-secundario);
+    cursor: pointer;
+}
+
+select{
+    width: 300px;
+    height: 40px;
+    margin: 10px;
+    text-align: center;
+    background: none;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: none;
+    border: 2px solid var(--verde-secundario);
+    color: var(--font-color);
+}
+
+option {
+  background-color: var(--verde-primario); /* fundo da opção  */
+}
