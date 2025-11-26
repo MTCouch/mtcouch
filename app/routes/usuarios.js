@@ -74,46 +74,63 @@ module.exports = function(app){
         response.render('usuarios/criar.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}, userId: request.session.usuario.id || {}});
     });
 
-    app.post('/criar', function(request, response){
-        var connection = app.infra.connectionFactory();
-        var PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
-        var planilha = request.body;
-        var userId = request.session.usuario.id;
-        var dias = parseInt(planilha.dias, 10);
-        request.assert('nome_treino','Nome da planilha é obrigatório!').notEmpty();
-        request.assert('dias','A quantidade de dias é obrigatório!').notEmpty();
-        request.assert('descricao','A descrição é obrigatória!').notEmpty();
-        var erros = request.validationErrors();
+    app.post('/criar', function(request, response) {
+    var connection = app.infra.connectionFactory();
+    var PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
+    var planilha = request.body;
+    var userId = request.session.usuario.id;
+    var dias = parseInt(planilha.dias, 10);
 
-        if(erros){
+    request.assert('nome_treino', 'Nome da planilha é obrigatório!').notEmpty();
+    request.assert('dias', 'A quantidade de dias é obrigatório!').notEmpty();
+    request.assert('descricao', 'A descrição é obrigatória!').notEmpty();
+
+    var erros = request.validationErrors();
+    if (erros) {
+        connection.end();
+        return response.render('usuarios/criar.ejs', { errosValidacao: erros, planilha: planilha });
+    }
+
+    PlanilhasDAO.salvar(planilha, userId, function(err, results) {
+        console.log("CHECKPOINT 1: SALVAR PLANILHA");
+
+        if (err) {
             connection.end();
-            return response.render('usuarios/criar.ejs', {errosValidacao: erros, planilha: planilha});
+            return response.send("Erro ao salvar planilha!");
         }
-        PlanilhasDAO.salvar(planilha, userId, function(err, results){
-            if(err){
+        if (!(results.insertId > 0)) {
+            connection.end();
+            return response.send("Erro inesperado: insertId inválido!");
+        }
+
+        PlanilhasDAO.buscarId(userId, function(err, results) {
+            console.log("CHECKPOINT 2: BUSCAR ID DA PLANILHA");
+            if (err) {
                 connection.end();
-                return response.send("Erro ao salvar planilha!");
-            } if(results.insertId > 0){ 
-                PlanilhasDAO.buscarId(userId, function(err, results){
-                    if(err){
-                        connection.end();
-                        return response.send("Erro ao buscar ID da planilha!");
-                    } if(results.length > 0){
-                        var planilhaId = results[0].id;
-                        PlanilhasDAO.salvarFicha(planilha, planilhaId, dias, function(err, results){
-                            if(err){
-                                console.log(err);
-                                connection.end();
-                                return response.send("Erro ao criar ficha!");
-                            } else{
-                                response.redirect('/treino');
-                            }
-                        });
-                    }
+                return response.send("Erro ao buscar ID da planilha!");
+            }
+            if (results.length === 0) {
+                connection.end();
+                return response.send("Erro: Nenhuma planilha encontrada após salvar!");
+            }
+
+            var planilhaId = results[0].id;
+            PlanilhasDAO.salvarFicha(planilha, planilhaId, dias, function(err) {
+                console.log("CHECKPOINT 3: SALVAR FICHA");
+                if (err) {
+                    console.log(err);
+                    connection.end();
+                    return response.send("Erro ao criar ficha!");
+                }
+                console.log("CHECKPOINT 4: REDIRECT FINAL");
+                connection.end();
+                return response.redirect('/fichas');
                 });
-            }            
+            });
         });
     });
+
+
 
     // EXERCÍCIOS
     app.get('/exercicios', function(request, response){
@@ -124,7 +141,6 @@ module.exports = function(app){
 
         // CRIAÇÃO COM IA
     app.get('/mtcf', function(request, response){
-        console.log("Entrou no get do MTC");
         response.render('usuarios/MTC_Form.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}});
     });
 
@@ -160,44 +176,29 @@ module.exports = function(app){
 
 
     app.get('/fichas', function(request, response) {
-        console.log("🟢 [GET /fichas] Rota acessada!");
-
-        // Mostra se há usuário na sessão
-        if (request.session.usuario) {
-            console.log("👤 Usuário logado:", request.session.usuario.nome || request.session.usuario.id);
-        } else {
-            console.warn("⚠️ Nenhum usuário logado na sessão!");
-        }
-
-        // Cria conexão com o banco
         var connection = app.infra.connectionFactory();
-        var UsuariosDAO = new app.infra.UsuariosDAO(connection);
-
-        console.log("🔄 Iniciando consulta de fichas no banco...");
+        var UsuariosDAO = new app.infra.UsuariosDAO(connection)
 
         UsuariosDAO.viewFichas(request, function(err, results) {
             if (err) {
-                console.error("❌ Erro ao buscar fichas:", err);
+                console.error("Erro ao buscar fichas:", err);
                 return response.status(500).send("Erro ao buscar fichas! " + err);
             }
+            response.render('usuarios/fichas.ejs', {usuario: request.session.usuario || {},fichas: results || []});
+        });
+    });
 
-            // Log de sucesso
-            console.log("✅ Consulta finalizada com sucesso!");
-            console.log(`📊 Total de fichas encontradas: ${results.length}`);
+    app.post('/fichas', function(request, response) {
+        var connection = app.infra.connectionFactory();
+        var usuariosDAO = new app.infra.UsuariosDAO(connection);
 
-            if (results.length > 0) {
-                console.table(results); // Mostra tabela bonita no console
-            } else {
-                console.log("ℹ️ Nenhuma ficha encontrada para este usuário.");
+        usuariosDAO.selectFicha(request, function(err, results) {
+            if (err){
+                console.error("Erro ao selecionar ficha:", err);
+                return response.status(500).send("Erro ao selecionar ficha! " + err);
             }
-
-            // Renderiza a view
-            response.render('usuarios/fichas.ejs', {
-                usuario: request.session.usuario || {},
-                fichas: results || []
-            });
-
-            console.log("📤 View 'usuarios/fichas.ejs' renderizada com dados!");
+            // Renderiza a página da ficha com os exercícios obtidos mas acredito que não seja nescessário recarregar a página novamente trazendo o modulo de viewFichas novamente
+            response.render('usuarios/ficha.ejs', {usuario: request.session.usuario || {}, exerciciosFicha: results || {} }); 
         });
     });
 

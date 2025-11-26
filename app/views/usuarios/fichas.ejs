@@ -8,24 +8,40 @@
     <link rel="stylesheet" href="/static/css/reset.css">
     <link rel="stylesheet" href="/static/css/var.css">
     <link rel="stylesheet" href="/static/css/configuracoes.css">
-    <link rel="stylesheet" href="/static/css/criar.css">
+    <link rel="stylesheet" href="/static/css/fichas.css">
 
     <style>
         main {
             display: flex;
-            justify-content: center;
+            border: 3px dashed var(--verde-secundario);
+            width: 50%;
+            height: 75vh;
+            padding: 5px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-left: 25vw;
         }
-        section{
+        form {
             display: flex;
             align-items: center;
-            height: 10vh;
-            width: 20%;
+            margin-bottom: 5px;
+            height: 100%;
+            width: 100%;
             background-color: brown;
         }
         .exercicios {
-            height: 70vh;
-            width: 30%;
+            margin: 5px;
+            height: 100%;
+            width: 70%; 
             background-color: brown;
+        }
+        .fds {
+            display: flex;
+            flex-direction: column;
+            overflow-y: scroll;
+            margin: 5px;
+            width: 30%;
+            height: 100%;
         }
 
     </style>
@@ -34,18 +50,40 @@
 <body>
     <%- include('../home/menu') %>
 
-    <main>
-        <section>
-            <div>
-                <h2>Nome</h2>
-                <p>Descrição</p>
-            </div>
-        </section>
 
-        <div class="exercicios">
-            <h2>Nada</h2>
+    <% if (fichas && fichas.length > 0) { %>
+    <main>
+
+        <div class="fds">
+        <% for (let i = 0; i < fichas.length; i++) { %>
+        <form action="/fichas" method="post">
+            <div>
+                <h2><%= fichas[i].nome %></h2>
+                <p><%= fichas[i].descricao %></p>
+            </div>
+        </form>
+        <% } %>
         </div>
+
+        <div class="exercicios" id="exercicios">
+            <div class="scroll">  
+                <div class="exercicio">
+                    <iframe id="img" src="">video</iframe>
+                    <div class="text">
+                        <h2 id="nome">nome exercicio</h2>
+                        <p id="descricao">descricao exercicio</p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+
     </main>
+
+    <% } else { %>
+    <main>
+        <a href="criar">Crie agora sua primeira ficha! <i>Clique aqui</i></a>
+    </main>
+    <% } %>
 
 </body>
 </html>
