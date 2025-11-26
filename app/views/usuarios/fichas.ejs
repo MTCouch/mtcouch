@@ -21,7 +21,7 @@
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             margin-left: 25vw;
         }
-        form {
+        section {
             display: flex;
             align-items: center;
             margin-bottom: 5px;
@@ -29,6 +29,7 @@
             width: 100%;
             background-color: brown;
         }
+
         .exercicios {
             margin: 5px;
             height: 100%;
@@ -56,24 +57,18 @@
 
         <div class="fds">
         <% for (let i = 0; i < fichas.length; i++) { %>
-        <form action="/fichas" method="post">
+        <section onclick="carregarExercicios('<%= fichas[i].id %>')">
             <div>
-                <h2><%= fichas[i].nome %></h2>
+                <h2 id="nome_ficha"><%= fichas[i].nome %></h2>
                 <p><%= fichas[i].descricao %></p>
             </div>
-        </form>
+        </section>
         <% } %>
         </div>
 
         <div class="exercicios" id="exercicios">
             <div class="scroll">  
-                <div class="exercicio">
-                    <iframe id="img" src="">video</iframe>
-                    <div class="text">
-                        <h2 id="nome">nome exercicio</h2>
-                        <p id="descricao">descricao exercicio</p>
-                    </div> 
-                </div>
+                <p>Selecione uma ficha para ver os exercícios</p>
             </div>
         </div>
 
@@ -84,6 +79,41 @@
         <a href="criar">Crie agora sua primeira ficha! <i>Clique aqui</i></a>
     </main>
     <% } %>
+
+    <script>
+
+        async function carregarExercicios(fichaId){
+
+            try{
+                const response = await fetch (` /usuarios/fichas/${fichaId}/exercicios `);
+                console.log(response);
+                // const exercicios = await response.json();
+
+                const exerciciosDiv = document.getElementById('exercicios');
+                exerciciosDiv.innerHTML = '';
+
+                if (exercicios.length === 0) {
+                    container.innerHTML = "<p>Nenhum exercício encontrado</p>";
+                    return;
+                }
+
+
+                exercicios.forEach(element => {
+                    container.innerHTML += `
+                        <div class="exercicio">
+                            <iframe src="${element.video_url}"></iframe>
+                            <div class="text">
+                                <h2>${element.nome}</h2>
+                                <p>${element.descricao}</p>
+                            </div> 
+                        </div>
+                    `;
+                });
+            } catch (err){
+                console.log('Erro ao carregar exercícios: ' + err.message);
+            }
+        }
+    </script>
 
 </body>
 </html>

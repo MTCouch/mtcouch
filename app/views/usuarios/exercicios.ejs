@@ -20,19 +20,18 @@
             
             <input type="text" id="pesquisa" name="pesquisa" value="" placeholder="Pesquisar...">
 
-            <select name="Agrupamento" id="">
+            <select name="Agrupamento" id="filtroGrupo">
+                <option value="">Todos</option>
                 <option value="Peito">Peito</option>
                 <option value="Costas">Costas</option>
-                <option value="Bracos">Braços</option> 
+                <option value="Braços">Braços</option> 
                 <option value="Ombros">Ombros</option>
-                <option value="Antebracos">Antebraços</option>
-                <option value="Quadriceps">Quadríceps</option>
-                <option value="Posterior">Posterior</option>
+                <option value="Pernas">Quadríceps</option>
+                <option value="Pernas">Posterior</option>
                 <option value="Gluteos">Glúteos</option>
-                <option value="Panturrilhas">Panturrilhas</option>
-                <option value="Adutores">Adutores</option>
-                <option value="Abdutores">Abdutores</option>
-                <option value="Abdomen">Abdômen</option>
+                <option value="Panturrilha">Panturrilha</option>
+                <option value="Abdômen">Abdômen</option>
+                <option value="Full Body">Full Body</option>
             </select>
 
         </form>
@@ -40,7 +39,7 @@
         <div class="exercicios">
             <div class="scrool">
                 <%for(let i=0; i < 101; i++){ %>
-                    <div class="exercicio">
+                    <div class="exercicio" data-grupo="<%= exercicios[i].agrupamento_muscular %>">
                         <iframe id="img" src="<%= exercicios[i].video%> || 0"></iframe>
                         <div class="text">
                             <h2 id="nome"><%= exercicios[i].nome%></h2>
@@ -56,6 +55,27 @@
 </div>
 
 </div>
-    <script src="/static/script/exercicios.js"></script>
+<script>
+    document.getElementById("pesquisa").addEventListener("input", filtrar);
+    document.getElementById("filtroGrupo").addEventListener("change", filtrar);
+
+    function filtrar() {
+        const texto = document.getElementById("pesquisa").value.toLowerCase();
+        const grupo = document.getElementById("filtroGrupo").value.toLowerCase();
+
+        const lista = document.querySelectorAll(".exercicio");
+
+        lista.forEach(ex => {
+            const nome = ex.querySelector("h2").textContent.toLowerCase();
+            const grupoEx = ex.dataset.grupo.toLowerCase();
+
+            const matchNome = nome.includes(texto);
+            const matchGrupo = grupo === "" || grupoEx === grupo;
+
+            ex.style.display = matchNome && matchGrupo ? "flex" : "none";
+        });
+    }
+</script>
+
 </body>
 </html>

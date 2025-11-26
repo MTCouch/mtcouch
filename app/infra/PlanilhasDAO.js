@@ -31,6 +31,11 @@ PlanilhasDAO.prototype.salvarFicha = function (planilha, planilhaId, dias, callb
     }
 };
 
+PlanilhasDAO.prototype.viewFichas = function (request, callback) {
+    this._connection.query('select * from fichas where usuario_id = ?',
+        [request.session.usuario.id], callback);
+}
+
 
 module.exports = function () {
     return PlanilhasDAO;

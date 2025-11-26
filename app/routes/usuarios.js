@@ -177,9 +177,9 @@ module.exports = function(app){
 
     app.get('/fichas', function(request, response) {
         var connection = app.infra.connectionFactory();
-        var UsuariosDAO = new app.infra.UsuariosDAO(connection)
+        var PlanilhasDAO = new app.infra.PlanilhasDAO(connection)
 
-        UsuariosDAO.viewFichas(request, function(err, results) {
+        PlanilhasDAO.viewFichas(request, function(err, results) {
             if (err) {
                 console.error("Erro ao buscar fichas:", err);
                 return response.status(500).send("Erro ao buscar fichas! " + err);
@@ -188,18 +188,23 @@ module.exports = function(app){
         });
     });
 
-    app.post('/fichas', function(request, response) {
-        var connection = app.infra.connectionFactory();
-        var usuariosDAO = new app.infra.UsuariosDAO(connection);
+    app.get('/fichas/:id/exercicios', function(req, res) {
+        const idFicha = req.params.id;
 
-        usuariosDAO.selectFicha(request, function(err, results) {
-            if (err){
-                console.error("Erro ao selecionar ficha:", err);
-                return response.status(500).send("Erro ao selecionar ficha! " + err);
+        const connection = app.infra.connectionFactory();
+        const PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
+
+        PlanilhasDAO.getExercicios(idFicha, function(err, result) {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ erro: "Erro ao buscar exercícios" });
             }
-            // Renderiza a página da ficha com os exercícios obtidos mas acredito que não seja nescessário recarregar a página novamente trazendo o modulo de viewFichas novamente
-            response.render('usuarios/ficha.ejs', {usuario: request.session.usuario || {}, exerciciosFicha: results || {} }); 
+            console.log("Exercícios encontrados:");
+            return res.json(result);
         });
     });
+
+
+
 
 }
