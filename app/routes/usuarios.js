@@ -69,50 +69,56 @@ module.exports = function(app){
         });
     });
 
+    app.get('/delete/:id', function(request, response){
+        var connection = app.infra.connectionFactory();
+        var ProdutosDAO = new app.infra.ProdutosDao(connection);
+        var id = request.params.id;
+        ProdutosDAO.apagar(id, function(err, results){
+            if(err){
+                connection.end();
+                return response.send('Erro ao deletar ficha!' + err);
+            }
+            connection.end();
+            return response.redirect('/fichas');
+        });
+    });
+
     app.get('/calculadora', function(request, response){
         response.render('usuarios/calculadora.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}, results: null });
     });
 
     app.post('/calculadora', function(request, response){
-        var peso = request.body.peso;
-        var altura = request.body.altura;
-        var idade = request.body.idade;
-        var sexo = request.body.sexo;
-        var nivel_atividade = request.body.atividade;
+        var connection = app.infra.connectionFactory();
+        var PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
+        var usuario = request.session.usuario;
+        var dados = request.body;
 
-        let bmr;
-        if(sexo === 'Masculino'){
-            bmr = 88.36 + (13.4 * peso) + (4.8 * altura) - (5.7 * idade);
-        } else if (sexo === 'Feminino'){
-            bmr = 447.6 + (9.2 * peso) + (3.1 * altura) - (4.3 * idade);
+        console.log("Recebido da calculadora:", dados);
+        console.log("Usuário logado:", usuario);
+
+        // Verificar se o objeto veio vazio
+        if (!dados) {
+            console.log("ERRO: Nenhum dado recebido no saveCalc!");
+            connection.end();
+            return response.send("Erro: Nenhum dado enviado para cálculo.");
         }
 
-        let fatorAtividade;
-        switch(nivel_atividade){
-            case 'sedentario': fatorAtividade = 1.2; break;
-            case 'leve': fatorAtividade = 1.375; break;
-            case 'moderado': fatorAtividade = 1.55; break;
-            case 'intenso': fatorAtividade = 1.725; break;
-        }
+        PlanilhasDAO.salvarCalculo(dados, usuario.id, function(err, results){
+            if(err){
+                console.log("Erro ao salvar cálculo:", err);
+                connection.end();
+                return response.send('Erro ao salvar cálculo!');
+            }
 
-        const tdee = bmr * fatorAtividade;
-        const proteina = (peso * 2) * 4;
-        const gordura = (peso * 0.8) * 9;
+            console.log("Cálculo salvo com sucesso! ID:", results.insertId);
 
-        const caloriasRestantes = tdee - (proteina + gordura);
-        const carboidrato = caloriasRestantes / 4;    
+            connection.end();
 
-        res.render('usuarios/calculadora.ejs', {
-            results: {
-                tdee: tdee.toFixed(2),
-                proteina: proteina.toFixed(2),
-                carboidrato: carboidrato.toFixed(2),
-                gordura: gordura.toFixed(2)
-            },
-            usuario: request.session.usuario || {}
+            return response.redirect('/fichas');
+
         });
-    
     });
+
 
     // CRIAÇÃO DE PLANILHAS DE TREINO
     app.get('/criar', function(request, response){

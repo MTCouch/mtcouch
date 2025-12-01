@@ -11,7 +11,7 @@ ProdutosDAO.prototype.salva = function(produto, callback){
 }
 
 ProdutosDAO.prototype.apagar = function(id, callback){
-    this._connection.query('delete from produtos where id = ?', id, callback);
+    this._connection.query('delete from fichas where id = ?', id, callback);
 }
 
 ProdutosDAO.prototype.buscar = function(id, callback){

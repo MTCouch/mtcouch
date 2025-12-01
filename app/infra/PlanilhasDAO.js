@@ -32,8 +32,13 @@ PlanilhasDAO.prototype.salvarFicha = function (planilha, planilhaId, dias, callb
 };
 
 PlanilhasDAO.prototype.viewFichas = function (request, callback) {
-    this._connection.query('select * from fichas where usuario_id = ?',
-        [request.session.usuario.id], callback);
+    this._connection.query('select * from fichas where usuario_id = ?',[request.session.usuario.id], callback);
+};
+
+PlanilhasDAO.prototype.salvarCalculo = function (dados, userId, callback) {
+    this._connection.query(
+        'INSERT INTO calculos (usuario_id, tdee, proteinas, carboidratos, gorduras) VALUES (?, ?, ?, ?, ?)',
+        [userId, dados.tdee, dados.proteinas, dados.carboidratos, dados.gorduras],callback);
 };
 
 module.exports = function () {

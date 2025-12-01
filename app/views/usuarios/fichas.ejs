@@ -61,6 +61,8 @@
             <div>
                 <h2 id="nome_ficha"><%= fichas[i].nome %></h2>
                 <p><%= fichas[i].descricao %></p>
+                <a href="/delete/<%=fichas[i].id%>"
+                onclick="return confirmarExcluir()">EXCLUIR</a>
             </div>
         </section>
         <% } %>
@@ -81,6 +83,10 @@
     <% } %>
 
     <script>
+
+        function confirmarExcluir(){
+            return confirm("Tem certeza que deseja excluir?");
+        }
 
         async function carregarExercicios(fichaId){
 
