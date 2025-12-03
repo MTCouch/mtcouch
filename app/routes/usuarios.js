@@ -71,15 +71,15 @@ module.exports = function(app){
 
     app.get('/delete/:id', function(request, response){
         var connection = app.infra.connectionFactory();
-        var ProdutosDAO = new app.infra.ProdutosDao(connection);
+        var PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
         var id = request.params.id;
-        ProdutosDAO.apagar(id, function(err, results){
+        PlanilhasDAO.apagar(id, function(err, results){
             if(err){
                 connection.end();
                 return response.send('Erro ao deletar ficha!' + err);
             }
             connection.end();
-            return response.redirect('/fichas');
+            return response.redirect('/calculadora');
         });
     });
 
@@ -93,7 +93,7 @@ module.exports = function(app){
         var usuario = request.session.usuario;
         var dados = request.body;
 
-        console.log("Recebido da calculadora:", dados);
+        console.log("Recebido da calculadora:", dados); 
         console.log("Usuário logado:", usuario);
 
         // Verificar se o objeto veio vazio
@@ -178,7 +178,11 @@ module.exports = function(app){
                 return response.redirect('/fichas');
                 });
             });
+            connection.end();
+            return response.redirect('/fichas');
         });
+        connection.end();
+        return response.redirect('/fichas');
     });
 
 
@@ -235,27 +239,23 @@ module.exports = function(app){
                 console.error("Erro ao buscar fichas:", err);
                 return response.status(500).send("Erro ao buscar fichas! " + err);
             }
-            response.render('usuarios/fichas.ejs', {usuario: request.session.usuario || {},fichas: results || []});
+            response.render('usuarios/fichas.ejs', {usuario: request.session.usuario || {},fichas: results || {}, treino: null,});
         });
     });
 
-    app.get('/fichas/:id/exercicios', function(req, res) {
-        const idFicha = req.params.id;
+    app.get('/fichas/:id', function(request, response) {
+        var connection = app.infra.connectionFactory();
+        var PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
+        var fichaId = request.params.id;
 
-        const connection = app.infra.connectionFactory();
-        const PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
-
-        PlanilhasDAO.getExercicios(idFicha, function(err, result) {
+        PlanilhasDAO.viewFichaExercicios(fichaId, function(err, results) {
             if (err) {
-                console.error(err);
-                return res.status(500).json({ erro: "Erro ao buscar exercícios" });
+                console.error("Erro ao buscar exercícios da ficha:", err);
+                return response.status(500).send("Erro ao buscar exercícios da ficha! " + err);
             }
-            console.log("Exercícios encontrados:");
-            return res.json(result);
+            console.log("Exercícios da ficha:", results);
+            return response.redirect('/fichas');
         });
     });
-
-
-
 
 }

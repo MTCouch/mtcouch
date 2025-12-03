@@ -35,11 +35,18 @@ PlanilhasDAO.prototype.viewFichas = function (request, callback) {
     this._connection.query('select * from fichas where usuario_id = ?',[request.session.usuario.id], callback);
 };
 
+PlanilhasDAO.prototype.viewFichaExercicios = function (fichaId, callback) {
+    this._connection.query('select * from dias_ficha where ficha_id = ?',[fichaId], callback);
+}
+
 PlanilhasDAO.prototype.salvarCalculo = function (dados, userId, callback) {
-    this._connection.query(
-        'INSERT INTO calculos (usuario_id, tdee, proteinas, carboidratos, gorduras) VALUES (?, ?, ?, ?, ?)',
+    this._connection.query('INSERT INTO calculos (usuario_id, tdee, proteinas, carboidratos, gorduras) VALUES (?, ?, ?, ?, ?)',
         [userId, dados.tdee, dados.proteinas, dados.carboidratos, dados.gorduras],callback);
-};
+}
+
+PlanilhasDAO.prototype.apagar = function(id, callback){
+    this._connection.query('DELETE FROM fichas WHERE id = ?', [id], callback);
+}
 
 module.exports = function () {
     return PlanilhasDAO;

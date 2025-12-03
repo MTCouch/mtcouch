@@ -10,10 +10,6 @@ ProdutosDAO.prototype.salva = function(produto, callback){
     this._connection.query('insert into produtos set ?', produto, callback);
 }
 
-ProdutosDAO.prototype.apagar = function(id, callback){
-    this._connection.query('delete from fichas where id = ?', id, callback);
-}
-
 ProdutosDAO.prototype.buscar = function(id, callback){
     this._connection.query('select * from produtos where id = ?', id, callback);
 }

@@ -27,15 +27,17 @@
             margin-bottom: 5px;
             height: 100%;
             width: 100%;
-            background-color: brown;
+            border-bottom: 2px solid black;
         }
 
         .exercicios {
             margin: 5px;
             height: 100%;
             width: 70%; 
-            background-color: brown;
+            overflow-y: auto;
+            padding: 10px;
         }
+
         .fds {
             display: flex;
             flex-direction: column;
@@ -44,80 +46,46 @@
             width: 30%;
             height: 100%;
         }
-
     </style>
     
 </head>
 <body>
     <%- include('../home/menu') %>
 
-
+ 
     <% if (fichas && fichas.length > 0) { %>
     <main>
 
         <div class="fds">
         <% for (let i = 0; i < fichas.length; i++) { %>
-        <section onclick="carregarExercicios('<%= fichas[i].id %>')">
+        <section>
             <div>
-                <h2 id="nome_ficha"><%= fichas[i].nome %></h2>
+                <h2 id="nome_ficha"><a href="/fichas/<%= fichas[i].id%>"><%= fichas[i].nome %></a></h2>
+                <p><%=fichas[i].id%></p>
                 <p><%= fichas[i].descricao %></p>
-                <a href="/delete/<%=fichas[i].id%>"
-                onclick="return confirmarExcluir()">EXCLUIR</a>
+                <a href="/delete/<%= fichas[i].id %>" onclick="return confirmarExcluir()">EXCLUIR</a>
             </div>
         </section>
         <% } %>
         </div>
 
-        <div class="exercicios" id="exercicios">
-            <div class="scroll">  
-                <p>Selecione uma ficha para ver os exercícios</p>
-            </div>
+        <div class="exercicios">
+            <div class="scrool">
+                <div><p></p></div>
+            </div> 
         </div>
-
+        
     </main>
 
     <% } else { %>
     <main>
-        <a href="criar">Crie agora sua primeira ficha! <i>Clique aqui</i></a>
+        <a href="/criar">Crie agora sua primeira ficha! <i>Clique aqui</i></a>
     </main>
     <% } %>
 
     <script>
-
         function confirmarExcluir(){
             return confirm("Tem certeza que deseja excluir?");
-        }
-
-        async function carregarExercicios(fichaId){
-
-            try{
-                const response = await fetch (` /usuarios/fichas/${fichaId}/exercicios `);
-                console.log(response);
-                // const exercicios = await response.json();
-
-                const exerciciosDiv = document.getElementById('exercicios');
-                exerciciosDiv.innerHTML = '';
-
-                if (exercicios.length === 0) {
-                    container.innerHTML = "<p>Nenhum exercício encontrado</p>";
-                    return;
-                }
-
-
-                exercicios.forEach(element => {
-                    container.innerHTML += `
-                        <div class="exercicio">
-                            <iframe src="${element.video_url}"></iframe>
-                            <div class="text">
-                                <h2>${element.nome}</h2>
-                                <p>${element.descricao}</p>
-                            </div> 
-                        </div>
-                    `;
-                });
-            } catch (err){
-                console.log('Erro ao carregar exercícios: ' + err.message);
-            }
         }
     </script>
 
