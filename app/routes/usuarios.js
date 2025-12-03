@@ -126,66 +126,47 @@ module.exports = function(app){
     });
 
     app.post('/criar', function(request, response) {
-    var connection = app.infra.connectionFactory();
-    var PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
-    var planilha = request.body;
-    var userId = request.session.usuario.id;
-    var dias = parseInt(planilha.dias, 10);
+        var connection = app.infra.connectionFactory();
+        var PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
+        var planilha = request.body;
+        var userId = request.session.usuario.id;
+        var dias = parseInt(planilha.dias, 10);
 
-    request.assert('nome_treino', 'Nome da planilha é obrigatório!').notEmpty();
-    request.assert('dias', 'A quantidade de dias é obrigatório!').notEmpty();
-    request.assert('descricao', 'A descrição é obrigatória!').notEmpty();
+        request.assert('nome_treino', 'Nome da planilha é obrigatório!').notEmpty();
+        request.assert('dias', 'A quantidade de dias é obrigatória!').notEmpty();
+        request.assert('descricao', 'A descrição é obrigatória!').notEmpty();
 
-    var erros = request.validationErrors();
-    if (erros) {
-        connection.end();
-        return response.render('usuarios/criar.ejs', { errosValidacao: erros, planilha: planilha });
-    }
-
-    PlanilhasDAO.salvar(planilha, userId, function(err, results) {
-        console.log("CHECKPOINT 1: SALVAR PLANILHA");
-
-        if (err) {
+        var erros = request.validationErrors();
+        if (erros) {
             connection.end();
-            return response.send("Erro ao salvar planilha!");
-        }
-        if (!(results.insertId > 0)) {
-            connection.end();
-            return response.send("Erro inesperado: insertId inválido!");
+            return response.render('usuarios/criar.ejs', { errosValidacao: erros, planilha: planilha });
         }
 
-        PlanilhasDAO.buscarId(userId, function(err, results) {
-            console.log("CHECKPOINT 2: BUSCAR ID DA PLANILHA");
+        PlanilhasDAO.salvar(planilha, userId, function(err, results) {
             if (err) {
                 connection.end();
-                return response.send("Erro ao buscar ID da planilha!");
-            }
-            if (results.length === 0) {
-                connection.end();
-                return response.send("Erro: Nenhuma planilha encontrada após salvar!");
+                return response.send("Erro ao salvar planilha!");
             }
 
-            var planilhaId = results[0].id;
+            console.log("CHECKPOINT 1: SALVAR PLANILHA");
+
+            const planilhaId = results.insertId; // <-- ID correto
+
             PlanilhasDAO.salvarFicha(planilha, planilhaId, dias, function(err) {
-                console.log("CHECKPOINT 3: SALVAR FICHA");
                 if (err) {
-                    console.log(err);
+                    console.error(err);
                     connection.end();
                     return response.send("Erro ao criar ficha!");
                 }
-                console.log("CHECKPOINT 4: REDIRECT FINAL");
+
+                console.log("CHECKPOINT 3: REDIRECT FINAL");
+
                 connection.end();
                 return response.redirect('/fichas');
-                });
             });
-            connection.end();
-            return response.redirect('/fichas');
         });
-        connection.end();
-        return response.redirect('/fichas');
+
     });
-
-
 
     // EXERCÍCIOS
     app.get('/exercicios', function(request, response){
@@ -239,7 +220,7 @@ module.exports = function(app){
                 console.error("Erro ao buscar fichas:", err);
                 return response.status(500).send("Erro ao buscar fichas! " + err);
             }
-            response.render('usuarios/fichas.ejs', {usuario: request.session.usuario || {},fichas: results || {}, treino: null,});
+            response.render('usuarios/fichas.ejs', {usuario: request.session.usuario || {},fichas: results || {}, dias_ficha: []});
         });
     });
 
@@ -253,8 +234,7 @@ module.exports = function(app){
                 console.error("Erro ao buscar exercícios da ficha:", err);
                 return response.status(500).send("Erro ao buscar exercícios da ficha! " + err);
             }
-            console.log("Exercícios da ficha:", results);
-            return response.redirect('/fichas');
+            response.render('usuarios/fichas.ejs', {usuario: request.session.usuario || {}, fichas: results || {}, dias_ficha: results || []});
         });
     });
 

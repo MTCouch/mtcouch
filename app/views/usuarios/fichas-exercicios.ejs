@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <% if (dias_ficha && dias_ficha.length > 0) { %>
+
+        <h1><%  %></h1>
+        <% dias_ficha.forEach(function(dia) { %>
+            <div class="dia">
+                <h2><%= dia.nome %></h2>
+            </div>
+        <% }); %>
+
+    <% } else { %>
+        <p>Nenhum dia encontrado para esta ficha.</p>
+    <% } %>
+
+
+    
+</body>
+</html>

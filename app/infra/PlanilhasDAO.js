@@ -9,21 +9,28 @@ PlanilhasDAO.prototype.salvar = function (planilha, userId, callback) {
 }
 
 PlanilhasDAO.prototype.buscarId = function (userId, callback) {
-    this._connection.query('SELECT id FROM fichas WHERE id = ?;',
+    this._connection.query('SELECT id FROM fichas WHERE usuario_id = ?;',
         [userId], callback);
 };
 
 PlanilhasDAO.prototype.salvarFicha = function (planilha, planilhaId, dias, callback) {
-    for (let dia = 1; dia <= dias; dia++) {
-        const nomeDia = `Treino ${String.fromCharCode(64 + dia)}`; // A, B, C - Gera o nome do dia altomaticamente
-        
+    let inseridos = 0;
+
+    for (let d = 1; d <= dias; d++) {
+        const nomeDia = `Treino ${String.fromCharCode(64 + d)}`;
+
         this._connection.query('INSERT INTO dias_ficha (ficha_id, nome) VALUES (?, ?)',
-            [planilhaId, nomeDia || null],
+            [planilhaId, nomeDia],
             (err, results) => {
                 if (err) {
                     console.error('Erro ao inserir dia:', err);
                     return callback(err);
-                }if (dia === planilha.dias) {
+                }
+
+                inseridos++;
+
+                // Quando todos os dias forem inseridos, chama o callback
+                if (inseridos === dias) {
                     callback(null, results);
                 }
             }
@@ -31,12 +38,13 @@ PlanilhasDAO.prototype.salvarFicha = function (planilha, planilhaId, dias, callb
     }
 };
 
+
 PlanilhasDAO.prototype.viewFichas = function (request, callback) {
     this._connection.query('select * from fichas where usuario_id = ?',[request.session.usuario.id], callback);
 };
 
 PlanilhasDAO.prototype.viewFichaExercicios = function (fichaId, callback) {
-    this._connection.query('select * from dias_ficha where ficha_id = ?',[fichaId], callback);
+    this._connection.query('SELECT * FROM dias_ficha where ficha_id = ?',[fichaId], callback);
 }
 
 PlanilhasDAO.prototype.salvarCalculo = function (dados, userId, callback) {
