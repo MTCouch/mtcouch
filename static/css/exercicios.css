@@ -1,6 +1,6 @@
 iframe{
     border-radius: 10px;
-    max-height: 150px;
+    height: 100%;
 }
 
 .conteiner{
@@ -28,7 +28,7 @@ iframe{
 
 .exercicio{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 1rem;
     background: var(--verde-primario);
     border-radius: 10px;

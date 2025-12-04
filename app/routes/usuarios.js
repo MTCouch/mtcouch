@@ -79,7 +79,7 @@ module.exports = function(app){
                 return response.send('Erro ao deletar ficha!' + err);
             }
             connection.end();
-            return response.redirect('/calculadora');
+            return response.redirect('/fichas');
         });
     });
 
@@ -175,7 +175,7 @@ module.exports = function(app){
         response.render('usuarios/exercicios.ejs', { exercicios: data.exercicios });
     });
 
-        // CRIAÇÃO COM IA
+    // CRIAÇÃO COM IA
     app.get('/mtcf', function(request, response){
         response.render('usuarios/MTC_Form.ejs', {errosValidacao: {}, usuario: request.session.usuario || {}});
     });

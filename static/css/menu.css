@@ -26,8 +26,9 @@ menu{
     flex-direction: column;
     justify-content: space-between;
 
-    position: absolute;
-
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 header{
@@ -52,11 +53,5 @@ img{
 .logout{
     display: flex;
     align-items: center;
-    font-size: 0.8em;
-}
-
-.logout img{
-    width: 40px;
-    height: auto;
-    margin-right: 5px;
+    font-size: 1em;
 }

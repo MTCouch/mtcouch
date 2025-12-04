@@ -14,10 +14,11 @@
     <%- include('../home/menu') %>
 
 <div class="conteiner">
-    <div class="formulario">
+    <div class="formulario" style="margin-top: 10vh;">
         <h1 class="criar">+ Criar Planilha</h1>
             <form action="/criar" method="post">
-
+                
+                <div class="centralizador">
                 <label for="nome_treino">Nome da Planilha:
                     <input id="nome_treino" name="nome_treino" type="text" placeholder="Nome da Planilha" required>
                 </label>
@@ -45,7 +46,7 @@
                 <br>
 
                 <input type="submit" value="Criar">
-
+                </div>
             </form>
     </div>
 </div>

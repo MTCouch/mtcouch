@@ -36,15 +36,6 @@ module.exports = function(app){
         });
     });
 
-    app.get('/delete/:id', function(request, response){
-        var id = request.params.id;
-
-        var connection = app.infra.connectionFactory();
-        var produtosDAO = new app.infra.ProdutosDAO(connection);
-        produtosDAO.apagar(id, function(err, results){
-            response.redirect('/produtos');
-        });
-    });
 
     app.get('/editar/:id', function(request, response){
         var id = request.params.id;

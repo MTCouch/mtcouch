@@ -14,7 +14,7 @@
     <%- include('../home/menu') %>
 
     <div class="conteiner">
-        <div class="formulario">
+        <div class="formulario" style="margin-top: 10vh;">
             <% if(treino){ %>
                 <h1><%= treino.nome %></h1>
 
@@ -26,7 +26,7 @@
                                 <% ficha.exercicios.forEach(exercicio => { %>
                                     <div class="exercicio">
                                         <div class="dvd">
-                                            <iframe id="img" src="<%= exercicio.video %>"></iframe>
+                                            <iframe id="img" src="<%= exercicio.video %>" style="border:none;" allow=" fullscreen" allowfullscreen></iframe>
 
                                             <div class="text_Nome_Exercicio">
                                                 <h1 id="nome" class="nomeExercicio"><%= exercicio.nome %></h1>

@@ -1,0 +1,40 @@
+.submit{
+    width: 200px;
+    height: 40px;
+    margin: 10px;
+    text-align: center;
+    background: none;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: none;
+    border: 2px solid var(--verde-secundario);
+    color: var(--font-color);
+}
+
+.submit:hover{
+    background: var(--verde-secundario);
+    cursor: pointer;
+}
+
+.text{
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    margin: 10px;
+    text-align: left;
+    background: none;
+    border-radius: 100px;
+    border: 2px solid var(--verde-secundario);
+    color: var(--font-color);
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.centralizador{
+    display: flex;
+    justify-content: center;
+}

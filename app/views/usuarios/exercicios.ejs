@@ -15,7 +15,7 @@
 
 
 <div class="conteiner">
-    <div class="formulario">
+    <div class="formulario" style="margin-top: 10vh;">
         <form action="">
             
             <input type="text" id="pesquisa" name="pesquisa" value="" placeholder="Pesquisar...">
@@ -40,12 +40,11 @@
             <div class="scrool">
                 <%for(let i=0; i < 101; i++){ %>
                     <div class="exercicio" data-grupo="<%= exercicios[i].agrupamento_muscular %>">
-                        <iframe id="img" src="<%= exercicios[i].video%> || 0"></iframe>
+                        <iframe id="img" src="<%= exercicios[i].video%> || 0" style="border:none;" allow=" fullscreen" allowfullscreen></iframe>
                         <div class="text">
                             <h2 id="nome"><%= exercicios[i].nome%></h2>
                             <p id="descricao"><%= exercicios[i].agrupamento_muscular%></p>
                         </div> 
-                        <input type="submit" value="Adicionar">
                     </div>
                 <% } %>
             </div> 

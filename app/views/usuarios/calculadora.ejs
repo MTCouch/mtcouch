@@ -8,42 +8,8 @@
     <link rel="stylesheet" href="/static/css/var.css">
     <link rel="stylesheet" href="/static/css/configuracoes.css">
     <link rel="stylesheet" href="/static/css/MTC_Form.css">
+    <link rel="stylesheet" href="/static/css/calculadora.css">
 
-<style>
-        #loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 0.3s ease;
-        }
-
-        .hidden {
-            display: none !important;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--verde-secundario);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
 </head>
 <body>
 
@@ -52,41 +18,43 @@
 
 
     <div class="container">
-        <div class="main">
-
-            <div id="loading-overlay" class="hidden">
-                <div class="spinner"></div>
-                <p style="color: var(--verde-secundario)"> Buscando o treino ideal...</p>
-            </div>
+        <div class="main" style="margin-top: 10vh;">
 
             <div class="nome"></div>
                 <div class="formulario">
                         <h1>Calculadora de Macronutrientes</h1>
     
-                        <label for="peso">Peso (kg):</label>
-                        <input type="number" id="peso" required>
+                        <label for="peso">Peso (kg):
+                            <input class="text" type="number" id="peso" placeholder="50kg" required>
+                        </label>
                         
-                        <label for="altura">Altura (cm):</label>
-                        <input type="number" id="altura" required>
+                        <label for="altura">Altura (cm):
+                            <input class="text" type="number" id="altura" placeholder="160cm" required>
+                        </label>
                         
-                        <label for="idade">Idade (anos):</label>
-                        <input type="number" id="idade" required>
+                        <label for="idade">Idade (anos):
+                            <input class="text" type="number" id="idade" placeholder="15 Anos" required>
+                        </label>
                         
-                        <label for="sexo">Sexo:</label>
-                        <select id="sexo">
-                            <option value="masculino">Masculino</option>
-                            <option value="feminino">Feminino</option>
-                        </select>
-                        
-                        <label for="atividade">Nível de Atividade Física:</label>
-                        <select id="atividade">
-                            <option value="sedentario">Sedentário</option>
-                            <option value="leve">Atividade leve (1-3 dias por semana)</option>
-                            <option value="moderado">Atividade moderada (3-5 dias por semana)</option>
-                            <option value="intenso">Atividade intensa (6-7 dias por semana)</option>
-                        </select>
+                        <label for="sexo">Sexo:
+                            <select id="sexo">
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino">Feminino</option>
+                            </select>
+                        </label>
 
-                        <button onclick="calcularMacronutrientes()">Calcular</button>
+                        <label for="atividade">Nível de Atividade Física:
+                            <select id="atividade">
+                                <option value="sedentario">Sedentário</option>
+                                <option value="leve">Atividade leve (1-3 dias por semana)</option>
+                                <option value="moderado">Atividade moderada (3-5 dias por semana)</option>
+                                <option value="intenso">Atividade intensa (6-7 dias por semana)</option>
+                            </select>
+                        </label>
+                         
+                        <div class="centralizador">
+                            <button class="submit" onclick="calcularMacronutrientes()">Calcular</button>
+                        </div>
 
                         <div class="result" id="result"></div>
 
@@ -135,8 +103,8 @@
             // Exibir no HTML
             document.getElementById('result').innerHTML = `
                 <div>
-                    <form action="/calculadora" method="post">
-                        
+                    </br>
+                    
                         <div><strong>TDEE (Total de Calorias por Dia):</strong> ${tdee.toFixed(2)} kcal</div>
                         <input type="hidden" name="tdee" value="${tdee.toFixed(2)}">
 
@@ -151,11 +119,6 @@
                         <div><strong>Gorduras:</strong> ${gordura.toFixed(2)} g</div>
                         <input type="hidden" name="gorduras" value="${gordura.toFixed(2)}">
 
-                        <div>
-                            <input type="submit" value="Salvar" name="salvar" id="salvar">  
-                        </div>
-
-                    </form>
                 </div>
             `;
         }
