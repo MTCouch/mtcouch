@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="/static/css/var.css">
     <link rel="stylesheet" href="/static/css/configuracoes.css">
     <link rel="stylesheet" href="/static/css/exercicios.css">
+
+    <style>
+        .divisor {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,29 +25,32 @@
     <div class="conteiner">
         <div class="formulario" style="margin-top: 10vh;">
             <% if(treino){ %>
-                <h1><%= treino.nome %></h1>
+                <h1 id="planilha_nome"><%= treino.nome %></h1>
 
                 <div class="exercicios">
                     <div class="scrool">
+                        <form action="/salvar-treino-ia" method="post">
+                        <input type="hidden" name="treino" value='<%= JSON.stringify(treino) %>'>
+                        <input type="submit" value="Salvar">
                         <% treino.fichas.forEach(ficha => { %>
                             <div class="ficha">
-                                <h1 class="text_Nome_Ficha"><%= ficha.nome %></h1>
+                                <h1 class="text_Nome_Ficha" id="ficha_nome"><%= ficha.nome %></h1>
                                 <% ficha.exercicios.forEach(exercicio => { %>
                                     <div class="exercicio">
                                         <div class="dvd">
-                                            <iframe id="img" src="<%= exercicio.video %>" style="border:none;" allow=" fullscreen" allowfullscreen></iframe>
+                                            <iframe id="exercicio_video" src="<%= exercicio.video %>" style="border:none;" allow=" fullscreen" allowfullscreen></iframe>
 
                                             <div class="text_Nome_Exercicio">
-                                                <h1 id="nome" class="nomeExercicio"><%= exercicio.nome %></h1>
-                                                <p class="seriesExercicios"><strong>Séries:</strong> <%= exercicio.series %></p>
-                                                <p class="repeticoesExercicios"><strong>Repetições:</strong> <%= exercicio.repeticoes %></p>
-                                                <p class="descansoExercicios"><strong>Descanso:</strong> <%= exercicio.descanso %></p>
+                                                <h1 id="exercicio_nome" class="nomeExercicio"><%= exercicio.nome %></h1>
+                                                <p id="exercicio_serie" class="seriesExercicios"><strong>Séries:</strong> <%= exercicio.series %></p>
+                                                <p id="exercicio_repet" class="repeticoesExercicios"><strong>Repetições:</strong> <%= exercicio.repeticoes %></p>
+                                                <p id="exercicio_descanso" class="descansoExercicios"><strong>Descanso:</strong> <%= exercicio.descanso %></p>
                                             </div>
                                         </div>
 
                                         <div class="text_Detalhes_Exercicio">
                                             <% if (exercicio.observacoes) { %>
-                                                <p class="observacoesExercicios"><strong>Observações:</strong> <%= exercicio.observacoes %></p>
+                                                <p id="exercicio_observacao" class="observacoesExercicios"><strong>Observações:</strong> <%= exercicio.observacoes %></p>
                                             <% } %>
                                         </div> 
 
@@ -46,6 +58,7 @@
                                 <% }); %>
                             </div>
                         <% }); %>
+                        </form>
                     </div> 
                 </div>
             <% } else { %>

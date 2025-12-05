@@ -220,22 +220,107 @@ module.exports = function(app){
                 console.error("Erro ao buscar fichas:", err);
                 return response.status(500).send("Erro ao buscar fichas! " + err);
             }
+
+            request.session.fichas = results;
             response.render('usuarios/fichas.ejs', {usuario: request.session.usuario || {},fichas: results || {}, dias_ficha: []});
         });
     });
 
-    app.get('/fichas/:id', function(request, response) {
+    app.get('/fichas/:id', function (request, response) {
         var connection = app.infra.connectionFactory();
         var PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
-        var fichaId = request.params.id;
 
-        PlanilhasDAO.viewFichaExercicios(fichaId, function(err, results) {
+        const fichaId = request.params.id;
+
+        PlanilhasDAO.viewFichaDias(fichaId, function (err, dias) {
             if (err) {
-                console.error("Erro ao buscar exercícios da ficha:", err);
-                return response.status(500).send("Erro ao buscar exercícios da ficha! " + err);
+                connection.end();
+                console.error("Erro ao buscar dias:", err);
+                return response.status(500).send("Erro ao buscar dias da ficha!");
             }
-            response.render('usuarios/fichas.ejs', {usuario: request.session.usuario || {}, fichas: results || {}, dias_ficha: results || []});
+
+            const ficha_atual = request.session.fichas.find(f => f.id == fichaId);
+            let contador = 0;
+
+            dias.forEach(dia => {
+                PlanilhasDAO.viewFichaExercicios(dia.id, function (err, exercicios) {
+                    contador++;
+
+                    dia.exercicios = exercicios || []; // sempre array
+
+                    console.log("Dia:", dia.nome, "Exercícios:", dia.exercicios);
+
+                    if (err){
+                        console.error("Erro ao buscar exercícios do dia " + dia.id, err);
+                    } 
+
+                    if (contador === dias.length) {
+                        connection.end();
+                        return response.render("usuarios/fichas.ejs", {
+                            usuario: request.session.usuario || {},
+                            fichas: request.session.fichas,
+                            ficha_atual: ficha_atual,
+                            dias_ficha: dias,
+                        });
+                    }
+                });
+            });
         });
     });
+
+app.post('/salvar-treino-ia', function(request, response){
+    var connection = app.infra.connectionFactory();
+    var PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
+
+    let treino;
+    const userId = request.session.usuario.id;
+
+    try {
+        treino = JSON.parse(request.body.treino);
+        console.log("JSON.parse bem-sucedido:", treino);
+        console.log("exercicios da ficha:", treino.fichas[0].nome); 
+    } catch (e) {
+        console.log("ERRO ao fazer JSON.parse:", e);
+        return response.send("Erro no JSON recebido da IA");
+    }
+
+PlanilhasDAO.prototype.salvarDiasIA = function(treino, fichaId, callback) {
+    const dias = treino.fichas; // dias = [ {nome, exercicios}, ... ]
+
+    if (!dias || dias.length === 0) {
+        return callback(null, []); // Nenhum dia? beleza
+    }
+
+    let diasIds = [];
+    let total = dias.length;
+    let inseridos = 0;
+
+    dias.forEach((dia, index) => {
+        this._connection.query(
+            "INSERT INTO dias_ficha (ficha_id, nome) VALUES (?, ?)",
+            [fichaId, dia.nome],
+            (err, result) => {
+                if (err) {
+                    return callback(err, null); // ERRO → para tudo
+                }
+
+                const id = result.insertId;
+                diasIds.push({ index, id });
+
+                inseridos++;
+
+                if (inseridos === total) {
+                    // só retorna quando TODOS foram salvos
+                    diasIds.sort((a,b)=>a.index-b.index);
+                    callback(null, diasIds);
+                }
+            }
+        );
+    });
+};
+
+
+});
+
 
 }

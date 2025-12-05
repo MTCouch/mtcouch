@@ -28,7 +28,7 @@ iframe{
 
 .exercicio{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 1rem;
     background: var(--verde-primario);
     border-radius: 10px;

@@ -39,13 +39,28 @@ PlanilhasDAO.prototype.salvarFicha = function (planilha, planilhaId, dias, callb
 };
 
 
+PlanilhasDAO.prototype.salvarFichaIA = function(treino, userId) {
+    this._connection.query("INSERT INTO fichas (nome, usuario_id) VALUES (?, ?)",[treino.nome, userId]
+    );
+}
+
+PlanilhasDAO.prototype.salvarDiasIA = function(treino, fichaId) {
+    treino.fichas.forEach((dia) => {
+        this._connection.query("INSERT INTO dias_ficha (ficha_id, nome) VALUES (?, ?)", [fichaId, dia.nome],)
+    });
+}
+
 PlanilhasDAO.prototype.viewFichas = function (request, callback) {
     this._connection.query('select * from fichas where usuario_id = ?',[request.session.usuario.id], callback);
 };
 
-PlanilhasDAO.prototype.viewFichaExercicios = function (fichaId, callback) {
+PlanilhasDAO.prototype.viewFichaDias = function (fichaId, callback) {
     this._connection.query('SELECT * FROM dias_ficha where ficha_id = ?',[fichaId], callback);
 }
+
+PlanilhasDAO.prototype.viewFichaExercicios = function (diaId, callback) {
+    this._connection.query('SELECT * FROM exercicios where dia_ficha_id = ?',[diaId], callback);
+};
 
 PlanilhasDAO.prototype.salvarCalculo = function (dados, userId, callback) {
     this._connection.query('INSERT INTO calculos (usuario_id, tdee, proteinas, carboidratos, gorduras) VALUES (?, ?, ?, ?, ?)',

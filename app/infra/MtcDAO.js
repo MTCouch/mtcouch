@@ -210,7 +210,6 @@ MtcDAO.prototype.buscarTreino = async function (planilha, callback) {
   
   let respostaTratada = respostaIa.replace(/```json/g, '').replace(/```/g, '').trim();
   const treino = JSON.parse(respostaTratada);
-  console.log("Treino gerado com sucesso:", treino);
   callback(null, treino);
 
   } catch (err) {
