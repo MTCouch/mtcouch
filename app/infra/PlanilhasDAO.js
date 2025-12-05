@@ -58,10 +58,6 @@ PlanilhasDAO.prototype.viewFichaDias = function (fichaId, callback) {
     this._connection.query('SELECT * FROM dias_ficha where ficha_id = ?',[fichaId], callback);
 }
 
-PlanilhasDAO.prototype.viewFichaExercicios = function (diaId, callback) {
-    this._connection.query('SELECT * FROM exercicios where dia_ficha_id = ?',[diaId], callback);
-};
-
 PlanilhasDAO.prototype.salvarCalculo = function (dados, userId, callback) {
     this._connection.query('INSERT INTO calculos (usuario_id, tdee, proteinas, carboidratos, gorduras) VALUES (?, ?, ?, ?, ?)',
         [userId, dados.tdee, dados.proteinas, dados.carboidratos, dados.gorduras],callback);
@@ -70,6 +66,19 @@ PlanilhasDAO.prototype.salvarCalculo = function (dados, userId, callback) {
 PlanilhasDAO.prototype.apagar = function(id, callback){
     this._connection.query('DELETE FROM fichas WHERE id = ?', [id], callback);
 }
+
+PlanilhasDAO.prototype.insertExercicio = function(diaId, dados, callback){
+    this._connection.query('INSERT INTO exercicios (dia_ficha_id, nome, agrupamento_muscular, dificuldade, classificacao, localidade, video)VALUES (?, ?, ?, ?, ?, ?, ?)', [diaId, dados.nome,
+        dados.agrupamento_muscular,
+        dados.dificuldade,
+        dados.classificacao, 
+        dados.localidade,
+        dados.video], callback);
+}
+
+PlanilhasDAO.prototype.viewFichaExercicios = function (diaId, callback) {
+    this._connection.query('SELECT * FROM exercicios where dia_ficha_id = ?',[diaId], callback);
+};
 
 module.exports = function () {
     return PlanilhasDAO;

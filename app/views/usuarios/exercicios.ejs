@@ -54,14 +54,36 @@
         <div class="exercicios">
             <div class="scrool">
                 <%for(let i=0; i < 101; i++){ %>
-                    <div class="exercicio" data-grupo="<%= exercicios[i].agrupamento_muscular %>">
-                        <iframe id="img" src="<%= exercicios[i].video%> || 0" style="border:none;" allow=" fullscreen" allowfullscreen></iframe>
-                        
-                        <div class="text">
-                            <h2 id="nome"><%= exercicios[i].nome%></h2>
-                            <p id="descricao"><%= exercicios[i].agrupamento_muscular%></p> 
+                    <form action="/salvar-exercicio/<%= diaId %> %>" method="POST">
+
+                        <input type="hidden" name="nome" value="<%= exercicios[i].nome %>">
+                        <input type="hidden" name="agrupamento_muscular" value="<%= exercicios[i].agrupamento_muscular %>">
+                        <input type="hidden" name="exercicioId" value="<%= exercicios[i].id %>">
+                        <input type="hidden" name="dificuldade" value="<%= exercicios[i].dificuldade %>">
+                        <input type="hidden" name="classificacao" value="<%= exercicios[i].classificacao %>">
+                        <input type="hidden" name="localidade" value="<%= exercicios[i].localidade %>">
+                        <input type="hidden" name="video" value="<%= exercicios[i].video %>">
+  
+
+                        <div class="exercicio" data-grupo="<%= exercicios[i].agrupamento_muscular %>">
+                            <iframe name="video" id="img" src="<%= exercicios[i].video%> || 0" style="border:none;" allow=" fullscreen" allowfullscreen></iframe>
+                            
+                            <div class="text">
+                                <h2><%= exercicios[i].nome%></h2>
+                                <p><%= exercicios[i].agrupamento_muscular%></p>
+                            </div>
+
+                            <% if(diaId){ %>
+                                <div>
+                                    <input type="submit" value="Adicionar">
+                                </div>
+                            <% }else{ %> 
+                                <div hidden>
+                                    <input hidden type="submit" value="Adicionar">
+                                </div>
+                            <% } %>
                         </div>
-                    </div>
+                    </form>
                 <% } %>
             </div> 
         </div>

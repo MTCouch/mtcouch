@@ -81,6 +81,8 @@
     <%- include('../home/menu') %>
 
     <% if (fichas && fichas.length > 0) { %>
+    <% var ficha_atual = typeof ficha_atual !== "undefined" ? ficha_atual : null; %>
+
     <main>
 
         <div class="fds" >
@@ -101,7 +103,8 @@
         </div>
     
         <div class="exercicios">
-            <%- include('../usuarios/fichas-exercicios', { dias_ficha: dias_ficha, ficha: fichas }) %>
+            <%- include('../usuarios/fichas-exercicios', { dias_ficha: dias_ficha,ficha_atual: ficha_atual,fichas: fichas}) %>
+
         </div>
         
     </main>
