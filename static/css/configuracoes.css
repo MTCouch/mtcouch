@@ -95,3 +95,7 @@ select{
 option {
   background-color: var(--verde-primario); /* fundo da opção  */
 }
+
+iframe{
+    border-radius: 20px;
+}

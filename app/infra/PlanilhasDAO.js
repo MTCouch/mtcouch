@@ -80,6 +80,17 @@ PlanilhasDAO.prototype.viewFichaExercicios = function (diaId, callback) {
     this._connection.query('SELECT * FROM exercicios where dia_ficha_id = ?',[diaId], callback);
 };
 
+PlanilhasDAO.prototype.atualizarExercicioDia = function(id, dados, callback) {
+    this._connection.query(
+        `UPDATE exercicios 
+         SET series = ?, repeticoes = ?, descanso = ?, observacoes = ?
+         WHERE id = ?`,
+        [dados.series, dados.repeticoes, dados.descanso, dados.observacoes, id],
+        callback
+    );
+};
+
+
 module.exports = function () {
     return PlanilhasDAO;
 }  

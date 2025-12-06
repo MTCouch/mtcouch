@@ -1,5 +1,5 @@
 iframe{
-    border-radius: 20px;
+    border-radius: 10px;
     height: 100%;
 }
 
@@ -9,24 +9,21 @@ iframe{
 }
 
 .formulario{
-    border: 3px dashed var(--verde-secundario);
-    width: 50%;
+    width: 100%;
     height: 75vh;
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 20px;
     min-width: 460px;
     display: flex;
-    flex-direction: column; /* organiza em colunas */
+    flex-direction: column;
 }
 
 .exercicios{
     flex: 1;
     min-height: 0;
-    margin: 5px;
-    height: 100%;
+    height: 100;
     width: 100%;
-    padding: 10px;
     overflow-y: auto;
 }
 
@@ -38,9 +35,11 @@ iframe{
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
-    height: 200px;
+
+    height: auto;
     width: 100%;
     min-width: 460px;
+
 }
 
 #exercicio_video{
@@ -67,6 +66,40 @@ iframe{
     text-align: left;
     margin: 10px;
 }
+
+.text_caracteristicas{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+    color: var(--font-color);
+}
+
+.text_obs{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+textarea, .inputs{
+    color: var(--font-color);
+}
+
+.btnSalvar {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 20px;
+    color: var(--verde-secundario);
+    transition: 0.2s;
+}
+
+.btnSalvar:hover {
+    transform: scale(1.2);
+}
+
 
 .text_Nome_Ficha{
     margin-left: 20px;

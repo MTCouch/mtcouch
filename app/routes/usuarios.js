@@ -343,4 +343,26 @@ module.exports = function(app){
         });
     });
 
+    app.post('/exercicio/:id/salvar', function(req, res) {
+    const idExercicioDia = req.params.id;
+
+    const dados = {
+        series: req.body.series,
+        repeticoes: req.body.repeticoes,
+        descanso: req.body.descanso,
+        observacoes: req.body.observacoes
+    };
+
+    const connection = app.infra.connectionFactory();
+    const PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
+
+    PlanilhasDAO.atualizarExercicioDia(idExercicioDia, dados, function(err) {
+        connection.end();
+        if (err) throw err;
+
+        res.redirect('back'); // volta pra ficha automaticamente
+    });
+});
+
+
 }
