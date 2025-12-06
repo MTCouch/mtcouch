@@ -37,13 +37,14 @@
         <div class="form">    
             <form action="/registro" method="POST">
                 <div class="center">
+                <h1>Crie sua conta</h1>
                 <div>
                     <input type="email" id="email" name="email" class="input" placeholder="Email" required/>
                 </div>
                 <div>
                     <input type="password" id="senha" name="senha" class="input" placeholder="Senha" required/>
                 </div>
-                <label for="senha" class="esqueceu_sua_senha">Já tem uma conta? <a href="/login">Acessar</a></label>
+                <label for="senha" class="esqueceu_sua_senha">Já tem uma conta?<a style="font-size:large;" href="/login"><u> Acessar</u></a></label>
                 <%if(usuario && usuario.tipo==1){%>
                 <div>
                     <label for="tipo">Tipo:</label>

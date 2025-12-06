@@ -58,20 +58,20 @@
 
                                                 <div class="text_caracteristicas">
                                                     <label><strong>Séries:</strong></label>
-                                                    <input class="inputs" type="number" name="series" value="<%= exercicio.series %>" placeholder="..." min="1" required>
+                                                    <input class="inputs" type="number" name="series" value="<%= exercicio.series %>" placeholder="..." min="1" style="margin-bottom: 0;" required>
 
                                                     <label><strong>Repetições:</strong></label>
-                                                    <input class="inputs" type="number" name="repeticoes" value="<%= exercicio.repeticoes %>" placeholder="..." min="1" required>
+                                                    <input class="inputs" type="number" name="repeticoes" value="<%= exercicio.repeticoes %>" placeholder="..." min="1" style="margin-bottom: 0;" required>
 
                                                     <label><strong>Descanso:</strong></label>
-                                                    <input class="inputs" type="number" name="descanso" value="<%= exercicio.descanso %>" placeholder="..." required>
+                                                    <input class="inputs" type="number" name="descanso" value="<%= exercicio.descanso %>" placeholder="..." style="margin-bottom: 0;" required>
 
                                                     <button type="submit" class="btnSalvar">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </button>
 
-                                                    <a href="" onclick="return confirmarExcluir()">
-                                                        <i style="" class="bi bi-trash"></i>
+                                                    <a class="btnSalvar" href="/delete_exercicio/<%= exercicio.id %>" onclick="return confirmarExcluir()">
+                                                        <i class="bi bi-trash"></i>
                                                     </a>
 
                                                 </div>
@@ -96,7 +96,7 @@
             </div>
 
         <% } else { %>
-            <h2>Nenhum treino encontrado.</h2>
+            <h2>Selecione uma Ficha.</h2>
         <% } %>
 
     </div>

@@ -89,8 +89,8 @@
                     <p id="nome_ficha"><a href="/fichas/<%= fichas[i].id%>"><%= fichas[i].nome %></a></p>
                     <p><%= fichas[i].descricao %></p>
                 </div>
-                <a href="/delete/<%= fichas[i].id %>" onclick="return confirmarExcluir()">
-                    <i style="font-size: 16px; margin-right: 10px;" class="bi bi-trash"></i>
+                <a class="btnSalvar" href="/delete/<%= fichas[i].id %>" onclick="return confirmarExcluir()">
+                    <i style="font-size: 25px; margin-right: 10px;" class="bi bi-trash"></i>
                 </a>
                 
             </div>

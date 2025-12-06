@@ -69,10 +69,11 @@ iframe{
 
 .text_caracteristicas{
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
-    gap: 10px;
-    margin-top: 10px;
     color: var(--font-color);
+
 }
 
 .text_obs{
@@ -80,10 +81,9 @@ iframe{
     flex-direction: row;
 }
 
-
-
 textarea, .inputs{
     color: var(--font-color);
+    margin-left: 5px;
 }
 
 .btnSalvar {
@@ -99,7 +99,6 @@ textarea, .inputs{
 .btnSalvar:hover {
     transform: scale(1.2);
 }
-
 
 .text_Nome_Ficha{
     margin-left: 20px;

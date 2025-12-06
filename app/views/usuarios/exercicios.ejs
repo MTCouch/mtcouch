@@ -11,9 +11,6 @@
 
     <style>
         .exercicio{
-            display: flex;
-            justify-content: flex-start;
-            gap: 1rem;
             background: var(--verde-primario);
             border-radius: 10px;
             padding: 10px;
@@ -21,6 +18,24 @@
             height: 200px;
             width: 100%;
             min-width: 460px;
+        }
+        .divisor{
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn-voltar {
+
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            font-size: 20px;
+            color: var(--verde-secundario);
+            transition: 0.2s;
+        }
+
+        .btn-voltar:hover {
+            transform: scale(1.2);
         }
     </style>
 </head>
@@ -49,6 +64,10 @@
                 <option value="Full Body">Full Body</option>
             </select>
 
+            <% if(diaId){ %>
+                <a href="/fichas" class="btn-voltar"><i class="bi bi-arrow-left-circle"></i><strong> Voltar</strong></a>
+            <% } %>
+
         </form>
 
         <div class="exercicios">
@@ -66,20 +85,19 @@
   
 
                         <div class="exercicio" data-grupo="<%= exercicios[i].agrupamento_muscular %>">
-                            <iframe name="video" id="img" src="<%= exercicios[i].video%> || 0" style="border:none;" allow=" fullscreen" allowfullscreen></iframe>
+                            <div class="divisor">
+                            <iframe name="video" id="img" src="<%= exercicios[i].video%> || 0" style="border:none; margin-right: 5px;" allow=" fullscreen" allowfullscreen></iframe>
                             
                             <div class="text">
                                 <h2><%= exercicios[i].nome%></h2>
                                 <p><%= exercicios[i].agrupamento_muscular%></p>
                             </div>
+                            </div>
+                            
 
                             <% if(diaId){ %>
                                 <div>
                                     <input type="submit" value="Adicionar">
-                                </div>
-                            <% }else{ %> 
-                                <div hidden>
-                                    <input hidden type="submit" value="Adicionar">
                                 </div>
                             <% } %>
                         </div>

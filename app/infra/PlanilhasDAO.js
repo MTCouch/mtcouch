@@ -39,16 +39,33 @@ PlanilhasDAO.prototype.salvarFicha = function (planilha, planilhaId, dias, callb
 };
 
 
-PlanilhasDAO.prototype.salvarFichaIA = function(treino, userId) {
-    this._connection.query("INSERT INTO fichas (nome, usuario_id) VALUES (?, ?)",[treino.nome, userId]
+PlanilhasDAO.prototype.salvarFichaIA = function(treino, userId, callback) {
+    this._connection.query(
+        "INSERT INTO fichas (nome, usuario_id) VALUES (?, ?)",
+        [treino.nome, userId],
+        callback
     );
-}
+};
 
-PlanilhasDAO.prototype.salvarDiasIA = function(treino, fichaId) {
+PlanilhasDAO.prototype.salvarDiasIA = function(treino, fichaId, callback) {
+    let inseridos = 0;
+
     treino.fichas.forEach((dia) => {
-        this._connection.query("INSERT INTO dias_ficha (ficha_id, nome) VALUES (?, ?)", [fichaId, dia.nome],)
+        this._connection.query(
+            "INSERT INTO dias_ficha (ficha_id, nome) VALUES (?, ?)",
+            [fichaId, dia.nome],
+            (err) => {
+                if (err) return callback(err);
+
+                inseridos++;
+                if (inseridos === treino.fichas.length) {
+                    callback(null);
+                }
+            }
+        );
     });
-}
+};
+
 
 PlanilhasDAO.prototype.viewFichas = function (request, callback) {
     this._connection.query('select * from fichas where usuario_id = ?',[request.session.usuario.id], callback);
@@ -90,6 +107,55 @@ PlanilhasDAO.prototype.atualizarExercicioDia = function(id, dados, callback) {
     );
 };
 
+PlanilhasDAO.prototype.apagarExercicioDia = function(idDiaExercicio, callback) {
+    this._connection.query('DELETE FROM exercicios WHERE id = ?', [idDiaExercicio], callback);
+
+};
+
+PlanilhasDAO.prototype.salvarTreinoIA = function(treino, usuarioId, callback) {
+    const conn = this._connection;
+
+    conn.query(
+        'INSERT INTO fichas (nome, usuario_id) VALUES (?, ?)',
+        [treino.nome, usuarioId],
+        function(err, resultFicha) {
+            if (err) return callback(err);
+
+            const fichaId = resultFicha.insertId;
+
+            treino.fichas.forEach(f => {
+                conn.query(
+                    'INSERT INTO dias_ficha (nome, ficha_id) VALUES (?, ?)',
+                    [f.nome, fichaId],
+                    function(err, resultDia) {
+                        if (err) return callback(err);
+
+                        const diaId = resultDia.insertId;
+
+                        f.exercicios.forEach(ex => {
+                            conn.query(
+                                `INSERT INTO dia_exercicios
+                                 (nome, series, repeticoes, descanso, observacoes, video, dia_id)
+                                 VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                                [
+                                    ex.nome,
+                                    ex.series,
+                                    ex.repeticoes,
+                                    ex.descanso,
+                                    ex.observacoes || null,
+                                    ex.video || null,
+                                    diaId
+                                ]
+                            );
+                        });
+                    }
+                );
+            });
+
+            callback(null, fichaId);
+        }
+    );
+};
 
 module.exports = function () {
     return PlanilhasDAO;

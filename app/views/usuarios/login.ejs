@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="/static/css/config_forms.css">
     <link rel="stylesheet" href="/static/css/login.css">
 
+    <style>
+        
+    </style>
+
 </head>
 <body>
 
@@ -29,15 +33,17 @@
         <div class="form">    
             <form action="/login" method="POST">
                 <div class="center">
+
+                <h1>Logar na sua conta</h1>
                 <div>
                     <input type="email" id="email" name="email" class="input" placeholder="Email" required/>
                 </div>
                 <div>
                     <input type="password" id="senha" name="senha" class="input" placeholder="Senha" required/>
                 </div>
-                <label for="senha" class="esqueceu_sua_senha">Não tem uma conta? <a href="/registro">Registrar</a></label>
+                <label for="senha" class="esqueceu_sua_senha">Não tem uma conta? <a style="font-size:large;" href="/registro"><u>Registrar</u></a></label>
 
-                <input type="submit" value="Logar"/>
+                <input class="input_button" type="submit" value="Logar"/>
                 </div>
             </form>
         </div>

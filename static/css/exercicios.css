@@ -17,7 +17,8 @@ iframe{
     padding: 20px;
     min-width: 460px;
     display: flex;
-    flex-direction: column; /* organiza em colunas */
+    flex-direction: column;
+
 }
 
 .exercicios{
@@ -58,7 +59,6 @@ iframe{
     display: flex;
     flex-direction: column;
     text-align: left;
-    margin: 10px;
 }
 
 .text_Nome_Exercicio{

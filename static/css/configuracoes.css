@@ -18,6 +18,10 @@ img{
     margin: 10px;
 }
 
+i{
+    font-size: 25px;
+}
+
 /* TAMANHO PADRONIZADO */
 
 p, a, label{

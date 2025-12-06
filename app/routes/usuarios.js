@@ -344,25 +344,60 @@ module.exports = function(app){
     });
 
     app.post('/exercicio/:id/salvar', function(req, res) {
-    const idExercicioDia = req.params.id;
+        const idExercicioDia = req.params.id;
 
-    const dados = {
-        series: req.body.series,
-        repeticoes: req.body.repeticoes,
-        descanso: req.body.descanso,
-        observacoes: req.body.observacoes
-    };
+        const dados = {
+            series: req.body.series,
+            repeticoes: req.body.repeticoes,
+            descanso: req.body.descanso,
+            observacoes: req.body.observacoes
+        };
 
-    const connection = app.infra.connectionFactory();
-    const PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
+        const connection = app.infra.connectionFactory();
+        const PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
 
-    PlanilhasDAO.atualizarExercicioDia(idExercicioDia, dados, function(err) {
-        connection.end();
-        if (err) throw err;
+        PlanilhasDAO.atualizarExercicioDia(idExercicioDia, dados, function(err) {
+            connection.end();
+            if (err) throw err;
 
-        res.redirect('back'); // volta pra ficha automaticamente
+            res.redirect('back'); // volta pra ficha automaticamente
+        });
     });
-});
 
+    app.get('/delete_exercicio/:id', function(request, response) {
+        const id = request.params.id;
+        console.log("ID do exercício a ser apagado:", id);
+
+        const connection = app.infra.connectionFactory();
+        const PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
+
+        PlanilhasDAO.apagarExercicioDia(id, function(err) {
+            connection.end();
+
+            if (err) {
+                console.error(err);
+            }
+            response.redirect('/fichas');
+        });
+    });
+
+    app.post('/salvar-treino-ia', function(req, res) {
+        const treino = JSON.parse(req.body.treino);
+        const usuarioId = req.session.usuario.id;
+
+        const connection = app.infra.connectionFactory();
+        const PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
+
+        PlanilhasDAO.salvarTreinoIA(treino, usuarioId, function(err, fichaId) {
+            connection.end();
+
+            if (err) {
+                console.error(err);
+                return res.status(500).send('Erro ao salvar treino da IA');
+            }
+
+            res.redirect(`/fichas/${fichaId}`);
+        });
+    });
 
 }
