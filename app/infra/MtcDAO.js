@@ -33,7 +33,8 @@ const systemInstructions = `
     5. Não invente informações médicas. Se o usuário mencionar problemas de saúde, **responda em JSON recomendando consulta com um profissional qualificado**.
     6. Mantenha respostas consistentes e sintaticamente válidas para fácil leitura por uma aplicação backend.
     7. Sempre retorne o treino exatamente no formato JSON abaixo, respeitando a mesma estrutura e chaves com o minimo de 6 exercicios por fichas.
-    8. Sempre que selecior um exercício com video, inclua o link do vídeo no campo "video". Caso não haja vídeo disponível, deixe o campo como null.-
+    8. Sempre que selecior um exercício com video, inclua o link do vídeo no campo "video". Caso não haja vídeo disponível, deixe o campo como null.
+    9. Sempre mande repasse as repetições e descanso como um numero inteiro{ falha:[12-10, 60s] acerto:[12, 60]}.
 
     {
       "nome": "Treino de Hipertrofia - Intermediário",
@@ -54,8 +55,8 @@ const systemInstructions = `
               "id": 8,
               "nome": "Supino Inclinado com Halteres",
               "series": 3,
-              "repeticoes": "10-12",
-              "descanso": "60s",
+              "repeticoes": "12",
+              "descanso": "60",
               "video": null,
               "observacoes": "Controle o movimento na descida."
             },
@@ -73,7 +74,7 @@ const systemInstructions = `
               "nome": "Tríceps Pulley",
               "series": 3,
               "repeticoes": "12",
-              "descanso": "45s",
+              "descanso": "45",
               "video": null,
               "observacoes": "Evite usar o tronco no movimento."
             },
@@ -81,8 +82,8 @@ const systemInstructions = `
               "id": 26,
               "nome": "Tríceps Francês",
               "series": 3,
-              "repeticoes": "10-12",
-              "descanso": "60s",
+              "repeticoes": "12",
+              "descanso": "60",
               "video": null,
               "observacoes": null
             }
@@ -95,8 +96,8 @@ const systemInstructions = `
               "id": 2,
               "nome": "Remada Curvada com Barra",
               "series": 4,
-              "repeticoes": "8-10",
-              "descanso": "90s",
+              "repeticoes": "10",
+              "descanso": "90",
               "video": null,
               "observacoes": "Mantenha a lombar reta durante o movimento."
             },
@@ -104,8 +105,8 @@ const systemInstructions = `
               "id": 9,
               "nome": "Puxada na Barra Fixa",
               "series": 3,
-              "repeticoes": "até a falha",
-              "descanso": "90s",
+              "repeticoes": "10",
+              "descanso": "90",
               "video": null,
               "observacoes": null
             },
@@ -123,7 +124,7 @@ const systemInstructions = `
               "nome": "Rosca Concentrada",
               "series": 3,
               "repeticoes": "12",
-              "descanso": "45s",
+              "descanso": "45",
               "video": null,
               "observacoes": null
             }
@@ -136,8 +137,8 @@ const systemInstructions = `
               "id": 3,
               "nome": "Agachamento Livre",
               "series": 4,
-              "repeticoes": "8-10",
-              "descanso": "90s",
+              "repeticoes": "10",
+              "descanso": "90",
               "video": null,
               "observacoes": "Manter o abdômen contraído."
             },
@@ -164,7 +165,7 @@ const systemInstructions = `
               "nome": "Press Militar com Barra",
               "series": 3,
               "repeticoes": "10",
-              "descanso": "60s",
+              "descanso": "60",
               "video": null,
               "observacoes": "Evite bloquear os cotovelos no topo."
             },

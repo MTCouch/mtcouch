@@ -232,90 +232,50 @@ module.exports = function(app){
 
         const fichaId = request.params.id;
 
-        PlanilhasDAO.viewFichaDias(fichaId, function (err, dias) {
-            if (err) {
+        PlanilhasDAO.viewFichaById(fichaId, function (err, ficha_atual) {
+            if (err || !ficha_atual || ficha_atual.length === 0) {
                 connection.end();
-                console.error("Erro ao buscar dias:", err);
-                return response.status(500).send("Erro ao buscar dias da ficha!");
+                return response.status(404).send("Ficha não encontrada");
             }
 
-            const ficha_atual = request.session.fichas.find(f => f.id == fichaId);
-            let contador = 0;
+            PlanilhasDAO.viewFichaDias(fichaId, function (err, dias) {
+                if (err) {
+                    connection.end();
+                    return response.status(500).send("Erro ao buscar dias da ficha!");
+                }
 
-            dias.forEach(dia => {
-                PlanilhasDAO.viewFichaExercicios(dia.id, function (err, exercicios) {
-                    contador++;
+                let contador = 0;
 
-                    dia.exercicios = exercicios || [];
+                if (dias.length === 0) {
+                    connection.end();
+                    return response.render("usuarios/fichas.ejs", {
+                        usuario: request.session.usuario || {},
+                        fichas: request.session.fichas || [],
+                        ficha_atual: ficha_atual[0],
+                        dias_ficha: []
+                    });
+                }
 
-                    if (err){
-                        console.error("Erro ao buscar exercícios do dia " + dia.id, err);
-                    } 
+                dias.forEach(dia => {
+                    PlanilhasDAO.viewFichaExercicios(dia.id, function (err, exercicios) {
+                        contador++;
+                        dia.exercicios = exercicios || [];
 
-                    if (contador === dias.length) {
-                        connection.end();
-                        return response.render("usuarios/fichas.ejs", {
+                        if (contador === dias.length) {
+                            connection.end();
+                            response.render("usuarios/fichas.ejs", {
                             usuario: request.session.usuario || {},
-                            fichas: request.session.fichas,
-                            ficha_atual: ficha_atual,
-                            dias_ficha: dias,
-                        });
-                    }
+                                fichas: request.session.fichas || [],
+                                ficha_atual: ficha_atual[0],
+                                dias_ficha: dias
+                            });
+                        }
+                    });
                 });
             });
         });
     });
 
-    app.post('/salvar-treino-ia', function(request, response){
-        var connection = app.infra.connectionFactory();
-        var PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
-
-        let treino;
-        const userId = request.session.usuario.id;
-
-        try {
-            treino = JSON.parse(request.body.treino);
-            console.log("JSON.parse bem-sucedido:", treino);
-            console.log("exercicios da ficha:", treino.fichas[0].nome); 
-        } catch (e) {
-            console.log("ERRO ao fazer JSON.parse:", e);
-            return response.send("Erro no JSON recebido da IA");
-        }
-
-        PlanilhasDAO.prototype.salvarDiasIA = function(treino, fichaId, callback) {
-            const dias = treino.fichas;
-
-            if (!dias || dias.length === 0) {
-                return callback(null, []); // Nenhum dia? beleza
-            }
-
-            let diasIds = [];
-            let total = dias.length;
-            let inseridos = 0;
-
-            dias.forEach((dia, index) => {
-                this._connection.query(
-                    "INSERT INTO dias_ficha (ficha_id, nome) VALUES (?, ?)",
-                    [fichaId, dia.nome],
-                    (err, result) => {
-                        if (err) {
-                            return callback(err, null);
-                        }
-
-                        const id = result.insertId;
-                        diasIds.push({ index, id });
-
-                        inseridos++;
-
-                        if (inseridos === total) {
-                            diasIds.sort((a,b)=>a.index-b.index);
-                            callback(null, diasIds);
-                        }
-                    }
-                );
-            });
-        };
-    });
 
     app.get('/ad-exercicios/:id', function(request, response){
         const jsonData = fs.readFileSync("Exercicios.json", 'utf8');
@@ -381,23 +341,23 @@ module.exports = function(app){
         });
     });
 
-    app.post('/salvar-treino-ia', function(req, res) {
-        const treino = JSON.parse(req.body.treino);
-        const usuarioId = req.session.usuario.id;
+    app.post('/salvar-treino-ia', async function(req, res) {
+        try {
+            const treino = JSON.parse(req.body.treino);
+            const usuarioId = req.session.usuario.id;
 
-        const connection = app.infra.connectionFactory();
-        const PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
+            var connection = app.infra.connectionFactory();
+            var PlanilhasDAO = new app.infra.PlanilhasDAO(connection);
 
-        PlanilhasDAO.salvarTreinoIA(treino, usuarioId, function(err, fichaId) {
-            connection.end();
+            const fichaId = await PlanilhasDAO.salvarTreinoIA(treino, usuarioId);
 
-            if (err) {
-                console.error(err);
-                return res.status(500).send('Erro ao salvar treino da IA');
-            }
+            connection.end(); // ✅ SÓ FECHA AGORA
 
-            res.redirect(`/fichas/${fichaId}`);
-        });
+            return res.redirect(`/fichas/${fichaId}`);
+
+        } catch (err) {
+            console.error('[ERRO] salvar-treino-ia:', err);
+            return res.status(500).send('Erro ao salvar treino da IA');
+        }
     });
-
 }
