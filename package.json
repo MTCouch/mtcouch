@@ -27,6 +27,7 @@
     "express-load": "^1.1.16",
     "express-session": "^1.18.2",
     "express-validator": "^2.20.8",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "openai": "^6.10.0"
   }
 }

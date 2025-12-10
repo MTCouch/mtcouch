@@ -5,7 +5,7 @@ var fs = require("fs");
 module.exports = function(app){
 
 /* =====================================================
-   🔐 AUTENTICAÇÃO
+   AUTENTICAÇÃO
 ===================================================== */
 
     app.get('/login', function(request, response){
@@ -60,7 +60,7 @@ module.exports = function(app){
     });
 
 /* =====================================================
-   🧾 REGISTRO
+   REGISTRO
 ===================================================== */
 
     app.get('/registro', function(request, response){
@@ -105,7 +105,7 @@ module.exports = function(app){
     });
 
 /* =====================================================
-   🧮 CALCULADORA
+   CALCULADORA
 ===================================================== */
 
     app.get('/calculadora', function(request, response){
@@ -140,7 +140,7 @@ module.exports = function(app){
     });
 
 /* =====================================================
-   📋 CRIAÇÃO DE PLANILHAS
+   CRIAÇÃO DE PLANILHAS
 ===================================================== */
 
     app.get('/criar', function(request, response){
@@ -193,7 +193,7 @@ module.exports = function(app){
     });
 
 /* =====================================================
-   📚 FICHAS
+   FICHAS
 ===================================================== */
 
     app.get('/fichas', function(request, response) {
@@ -279,7 +279,7 @@ module.exports = function(app){
     });
 
 /* =====================================================
-   🏋️ EXERCÍCIOS
+   EXERCÍCIOS
 ===================================================== */
 
     app.get('/exercicios', function(request, response){
@@ -347,7 +347,7 @@ module.exports = function(app){
     });
 
 /* =====================================================
-   🤖 IA
+   IA
 ===================================================== */
 
     app.get('/mtcf', function(request, response){
