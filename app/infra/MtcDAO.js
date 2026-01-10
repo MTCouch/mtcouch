@@ -186,8 +186,8 @@ const systemInstructions = `
 
 MtcDAO.prototype.buscarTreino = async function (planilha, callback) {
   try {
-    const apiKey = "4hdJfA52VGyPt9HMz9fY1v6ZTARldybnZtSGfvqf3y5c4U7H6YNRJQQJ99BHACHYHv6XJ3w3AAAAACOGuUpn";
-    const endpoint = "https://carlo-mekj9ulp-eastus2.cognitiveservices.azure.com/";
+    const apiKey = process.env.AZURE_OPENAI_API_KEY;
+    const endpoint = process.env.AZURE_OPENAI_ENDPOINT;
     const deployment = "gpt-4o-mini";
     const apiVersion = "2024-04-01-preview";
 

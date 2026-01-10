@@ -4,6 +4,9 @@ var load = require('express-load');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var session = require('express-session');
+require('dotenv').config();
+
+
 
 app.set('view engine', 'ejs');
 app.set('views','./app/views');
