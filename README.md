@@ -59,7 +59,7 @@ Desenvolver uma aplicação funcional que demonstre domínio técnico e capacida
 
 # 🔧 Instalação
 ### Clonar o repositório
-- git clone https://github.com/seu-usuario/seu-repositorio.git
+- git clone https://github.com/MTCouch/mtcouch.git
 
 ### Instalar dependências
 - npm install
